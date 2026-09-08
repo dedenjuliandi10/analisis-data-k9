@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analisis Data dengan Teknik Visualisasi - Informatika Kelas VIII & IX</title>
+  <!-- Google Fonts: Poppins & Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- CSS Terpisah -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER & NAVBAR -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-logo" onclick="navigateTo('beranda')">
+        <div class="logo-badge">📊</div>
+        <div class="brand-text">
+          <span class="brand-subject">Informatika SMP/MTs</span>
+          <span class="brand-title">Analisis Data</span>
+        </div>
+      </div>
+
+      <!-- PROGRESS BELAJAR -->
+      <div class="header-progress-wrap" title="Progres Belajar Siswa">
+        <div class="progress-labels">
+          <span class="progress-title">⚡ Progres Belajar</span>
+          <span class="progress-percent" id="globalProgressText">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="globalProgressBar" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- TOMBOL HAMBURGER MOBILE -->
+      <button class="menu-toggle" id="menuToggleBtn" aria-label="Buka Menu Navigasi" onclick="toggleMobileNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- 6 MENU UTAMA (WAJIB) -->
+      <nav class="main-nav" id="mainNavbar">
+        <ul class="nav-list">
+          <li>
+            <button class="nav-link active" data-target="beranda" onclick="navigateTo('beranda')">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Beranda</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-link" data-target="materi" onclick="navigateTo('materi')">
+              <span class="nav-icon">📚</span>
+              <span class="nav-text">Materi</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-link" data-target="tahapan" onclick="navigateTo('tahapan')">
+              <span class="nav-icon">🔄</span>
+              <span class="nav-text">Tahapan Analisis</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-link" data-target="aktivitas" onclick="navigateTo('aktivitas')">
+              <span class="nav-icon">🎮</span>
+              <span class="nav-text">Aktivitas</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-link" data-target="kuis" onclick="navigateTo('kuis')">
+              <span class="nav-icon">📝</span>
+              <span class="nav-text">Kuis</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-link" data-target="rangkuman" onclick="navigateTo('rangkuman')">
+              <span class="nav-icon">💡</span>
+              <span class="nav-text">Rangkuman</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- KONTEN UTAMA (SINGLE PAGE APPLICATION) -->
+  <main class="main-container">
+
+    <!-- ============================================== -->
+    <!-- 1. MENU BERANDA -->
+    <!-- ============================================== -->
+    <section id="beranda" class="content-section active">
+      <div class="hero-card">
+        <div class="hero-content">
+          <div class="badge-tag">BAB 2 • INFORMATIKA SMP/MTs</div>
+          <h1 class="hero-title">Analisis Data dengan Teknik Visualisasi</h1>
+          <p class="hero-subtitle">
+            Belajar mengolah, memahami, dan menyajikan data agar lebih mudah dipahami.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="navigateTo('materi')">
+              <span>🚀 Mulai Belajar</span>
+            </button>
+            <button class="btn btn-outline-light" onclick="navigateTo('aktivitas')">
+              <span>🎮 Mulai Aktivitas</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Ilustrasi Siswa & Data Visualisasi -->
+        <div class="hero-illustration">
+          <div class="illustration-board">
+            <div class="floating-tag tag-top">📈 Tren Data Naik!</div>
+            <div class="floating-tag tag-bottom">💡 Informasi Bermakna</div>
+            <svg viewBox="0 0 420 300" class="hero-svg" xmlns="http://www.w3.org/2000/svg">
+              <!-- Whiteboard Dashboard -->
+              <rect x="20" y="20" width="380" height="230" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="3"/>
+              <!-- Axis lines -->
+              <line x1="60" y1="200" x2="360" y2="200" stroke="#94a3b8" stroke-width="2"/>
+              <line x1="60" y1="60" x2="60" y2="200" stroke="#94a3b8" stroke-width="2"/>
+              <!-- Grid lines -->
+              <line x1="60" y1="150" x2="360" y2="150" stroke="#f1f5f9" stroke-width="2" stroke-dasharray="4"/>
+              <line x1="60" y1="105" x2="360" y2="105" stroke="#f1f5f9" stroke-width="2" stroke-dasharray="4"/>
+              <!-- Bar chart elements -->
+              <rect x="85" y="130" width="28" height="70" rx="4" fill="#38bdf8"/>
+              <rect x="130" y="95" width="28" height="105" rx="4" fill="#1e3a8a"/>
+              <rect x="175" y="75" width="28" height="125" rx="4" fill="#10b981"/>
+              <rect x="220" y="115" width="28" height="85" rx="4" fill="#f97316"/>
+              <rect x="265" y="65" width="28" height="135" rx="4" fill="#8b5cf6"/>
+              <!-- Line trend -->
+              <path d="M 99 125 Q 144 90 189 70 T 279 60" fill="none" stroke="#f43f5e" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="99" cy="125" r="5" fill="#f43f5e"/>
+              <circle cx="144" cy="90" r="5" fill="#f43f5e"/>
+              <circle cx="189" cy="70" r="5" fill="#f43f5e"/>
+              <circle cx="234" cy="110" r="5" fill="#f43f5e"/>
+              <circle cx="279" cy="60" r="5" fill="#f43f5e"/>
+              <!-- Avatar Siswa SMP -->
+              <g transform="translate(255, 145)">
+                <!-- Seragam SMP -->
+                <ellipse cx="60" cy="140" rx="34" ry="38" fill="#1e40af"/>
+                <polygon points="50,105 70,105 60,125" fill="#ffffff"/>
+                <polygon points="57,110 63,110 60,145" fill="#dc2626"/>
+                <!-- Kepala & Rambut -->
+                <circle cx="60" cy="72" r="25" fill="#fed7aa"/>
+                <path d="M 37 72 C 37 44 83 44 83 72 C 76 57 44 57 37 72 Z" fill="#1e293b"/>
+                <!-- Kacamata & Senyum -->
+                <circle cx="52" cy="72" r="6" fill="none" stroke="#0f172a" stroke-width="2"/>
+                <circle cx="68" cy="72" r="6" fill="none" stroke="#0f172a" stroke-width="2"/>
+                <line x1="58" y1="72" x2="62" y2="72" stroke="#0f172a" stroke-width="2"/>
+                <path d="M 54 83 Q 60 88 66 83" fill="none" stroke="#c2410c" stroke-width="2" stroke-linecap="round"/>
+                <!-- Kaca Pembesar / Detektif Data -->
+                <circle cx="15" cy="65" r="16" fill="#e0f2fe" fill-opacity="0.75" stroke="#0284c7" stroke-width="3"/>
+                <line x1="26" y1="76" x2="42" y2="92" stroke="#0369a1" stroke-width="4" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 KARTU POKOK PEMBELAJARAN -->
+      <div class="section-divider">
+        <h2 class="section-title">3 Pilar Utama Analisis & Visualisasi</h2>
+        <p class="section-subtitle">Kunci penting yang akan kita pelajari bersama pada bab ini</p>
+      </div>
+
+      <div class="cards-grid-3">
+        <div class="concept-card card-darkblue">
+          <div class="card-icon">📊</div>
+          <h3>ANALISIS DATA</h3>
+          <p>“Proses mengolah data untuk mendapatkan informasi yang bermakna.”</p>
+          <div class="card-note">Dari data mentah menjadi fakta berharga</div>
+        </div>
+
+        <div class="concept-card card-lightblue">
+          <div class="card-icon">📈</div>
+          <h3>VISUALISASI DATA</h3>
+          <p>“Menyajikan data dalam bentuk tabel, grafik, atau diagram.”</p>
+          <div class="card-note">Agar data lebih mudah dan cepat dipahami</div>
+        </div>
+
+        <div class="concept-card card-purple">
+          <div class="card-icon">💡</div>
+          <h3>KESIMPULAN</h3>
+          <p>“Menemukan informasi penting dari data untuk membantu pengambilan keputusan.”</p>
+          <div class="card-note">Solusi tepat berlandaskan data yang akurat</div>
+        </div>
+      </div>
+
+      <!-- TUJUAN PEMBELAJARAN -->
+      <div class="objectives-box">
+        <div class="obj-head">
+          <span class="obj-icon">🎯</span>
+          <div>
+            <h3>Tujuan Pembelajaran</h3>
+            <p>Setelah menggunakan website pembelajaran ini, siswa diharapkan mampu:</p>
+          </div>
+        </div>
+        <ul class="obj-list">
+          <li><span class="check-circle">✓</span> <span>Menjelaskan pengertian analisis data.</span></li>
+          <li><span class="check-circle">✓</span> <span>Mengenali tahapan analisis data.</span></li>
+          <li><span class="check-circle">✓</span> <span>Mengenali jenis visualisasi data.</span></li>
+          <li><span class="check-circle">✓</span> <span>Membaca grafik.</span></li>
+          <li><span class="check-circle">✓</span> <span>Menarik kesimpulan berdasarkan data.</span></li>
+        </ul>
+        <div class="obj-action">
+          <button class="btn btn-primary" onclick="navigateTo('materi')">Lanjut ke Materi Pembelajaran ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 2. MENU MATERI -->
+    <!-- ============================================== -->
+    <section id="materi" class="content-section">
+      <div class="section-heading">
+        <div class="badge-tag">MODUL BELAJAR</div>
+        <h2>Materi Pembelajaran</h2>
+        <p>Pelajari pengertian analisis data, tujuannya, serta teknik visualisasi data melalui kartu interaktif berikut.</p>
+      </div>
+
+      <!-- SUB MATERI A: PENGERTIAN ANALISIS DATA -->
+      <div class="materi-section-card">
+        <div class="materi-header">
+          <span class="materi-letter">A</span>
+          <h3>Pengertian Analisis Data</h3>
+        </div>
+        <div class="quote-box">
+          <p>“<strong>Analisis data</strong> adalah proses <strong>memeriksa</strong>, <strong>membersihkan</strong>, <strong>mengolah</strong>, dan <strong>menafsirkan</strong> data untuk mendapatkan informasi yang bermakna.”</p>
+        </div>
+
+        <!-- Contoh Sederhana Nilai -->
+        <div class="example-card">
+          <div class="example-badge">💡 Contoh Sederhana di Kelas</div>
+          <p class="example-subtitle">Data nilai ulangan 5 orang siswa:</p>
+          <div class="chips-row">
+            <span class="chip">70</span>
+            <span class="chip">80</span>
+            <span class="chip chip-highlight">90</span>
+            <span class="chip">75</span>
+            <span class="chip">85</span>
+          </div>
+          <div class="example-interactive">
+            <p class="example-q"><strong>Pertanyaan:</strong> “Berapa nilai tertinggi?”</p>
+            <div class="example-ans-wrap">
+              <button class="btn btn-sm btn-outline" id="btnReveal" onclick="toggleRevealCase()">
+                🔍 Klik untuk Menampilkan Jawaban
+              </button>
+              <div class="reveal-content" id="revealCase" style="display:none;">
+                <div class="ans-tag">Jawaban: <strong>90</strong></div>
+                <p class="ans-text">
+                  Dengan memeriksa sekumpulan data nilai di atas, kita dapat menyimpulkan bahwa nilai tertinggi adalah <strong>90</strong>. 
+                  Inilah fungsi analisis data: <strong>membantu kita menemukan informasi dari sekumpulan data!</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB MATERI B: TUJUAN ANALISIS DATA -->
+      <div class="materi-section-card">
+        <div class="materi-header">
+          <span class="materi-letter">B</span>
+          <h3>Tujuan Analisis Data</h3>
+        </div>
+        <p class="section-guide-text">Terdapat 4 tujuan pokok mengapa kita melakukan analisis data:</p>
+        <div class="goals-grid">
+          <div class="goal-box">
+            <div class="goal-seq">1</div>
+            <div class="goal-symbol">📈</div>
+            <h4>Menemukan Pola & Tren</h4>
+            <p>Melihat kecenderungan data yang berulang atau perubahan yang terjadi dari waktu ke waktu.</p>
+          </div>
+          <div class="goal-box">
+            <div class="goal-seq">2</div>
+            <div class="goal-symbol">⚖️</div>
+            <h4>Membandingkan Data</h4>
+            <p>Mengetahui perbandingan, perbedaan, dan persamaan antarkelompok data.</p>
+          </div>
+          <div class="goal-box">
+            <div class="goal-seq">3</div>
+            <div class="goal-symbol">🎯</div>
+            <h4>Membantu Pengambilan Keputusan</h4>
+            <p>Menyediakan bukti kuat dan fakta nyata agar keputusan yang diambil tepat sasaran.</p>
+          </div>
+          <div class="goal-box">
+            <div class="goal-seq">4</div>
+            <div class="goal-symbol">✨</div>
+            <h4>Mengubah Data Menjadi Informasi Bermakna</h4>
+            <p>Mengubah kumpulan angka acak menjadi wawasan yang jelas dan bermanfaat.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB MATERI C: TEKNIK VISUALISASI DATA -->
+      <div class="materi-section-card">
+        <div class="materi-header">
+          <span class="materi-letter">C</span>
+          <h3>Teknik Visualisasi Data</h3>
+        </div>
+        <p class="section-guide-text">
+          <strong>Klik pada setiap kartu</strong> di bawah ini untuk melihat nama, pengertian, fungsi, contoh penggunaan, serta ilustrasi grafiknya!
+        </p>
+
+        <div class="viz-cards-container">
+          <!-- Kartu 1: Diagram Batang -->
+          <div class="viz-interactive-card" onclick="openVizModal('batang')">
+            <div class="viz-badge-icon">📊</div>
+            <h4>Diagram Batang</h4>
+            <p>Cocok untuk membandingkan beberapa kategori.</p>
+            <span class="card-tap-indicator">Buka Detail & Grafik ➔</span>
+          </div>
+
+          <!-- Kartu 2: Diagram Garis -->
+          <div class="viz-interactive-card" onclick="openVizModal('garis')">
+            <div class="viz-badge-icon">📈</div>
+            <h4>Diagram Garis</h4>
+            <p>Cocok untuk melihat perubahan data dari waktu ke waktu.</p>
+            <span class="card-tap-indicator">Buka Detail & Grafik ➔</span>
+          </div>
+
+          <!-- Kartu 3: Diagram Lingkaran -->
+          <div class="viz-interactive-card" onclick="openVizModal('lingkaran')">
+            <div class="viz-badge-icon">🥧</div>
+            <h4>Diagram Lingkaran</h4>
+            <p>Cocok untuk menunjukkan bagian atau proporsi dari keseluruhan.</p>
+            <span class="card-tap-indicator">Buka Detail & Grafik ➔</span>
+          </div>
+
+          <!-- Kartu 4: Histogram -->
+          <div class="viz-interactive-card" onclick="openVizModal('histogram')">
+            <div class="viz-badge-icon">📶</div>
+            <h4>Histogram</h4>
+            <p>Cocok untuk melihat distribusi dan sebaran data.</p>
+            <span class="card-tap-indicator">Buka Detail & Grafik ➔</span>
+          </div>
+
+          <!-- Kartu 5: Scatter Plot -->
+          <div class="viz-interactive-card" onclick="openVizModal('scatter')">
+            <div class="viz-badge-icon">🔵</div>
+            <h4>Scatter Plot</h4>
+            <p>Cocok untuk melihat hubungan antara dua variabel.</p>
+            <span class="card-tap-indicator">Buka Detail & Grafik ➔</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL DETAIL VISUALISASI -->
+      <div class="modal-backdrop" id="vizDetailModal" onclick="closeVizModal(event)">
+        <div class="modal-dialog" onclick="event.stopPropagation() cinema">
+          <button class="modal-close-btn" onclick="closeVizModal()" aria-label="Tutup">&times;</button>
+          <div class="modal-top">
+            <span class="modal-icon" id="mIcon">📊</span>
+            <div>
+              <h3 id="mTitle">Diagram Batang</h3>
+              <span class="modal-category">Teknik Visualisasi Data</span>
+            </div>
+          </div>
+          <div class="modal-content-details">
+            <div class="detail-item">
+              <div class="detail-title">📖 Pengertian:</div>
+              <div class="detail-desc" id="mPengertian">-</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-title">🎯 Fungsi:</div>
+              <div class="detail-desc" id="mFungsi">-</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-title">💡 Contoh Penggunaan:</div>
+              <div class="detail-desc" id="mContoh">-</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-title">🎨 Ilustrasi Grafik:</div>
+              <div class="modal-chart-box">
+                <canvas id="modalCanvas"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button class="btn btn-primary btn-sm" onclick="closeVizModal()">Mengerti, Tutup Modal ✓</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 3. MENU TAHAPAN ANALISIS -->
+    <!-- ============================================== -->
+    <section id="tahapan" class="content-section">
+      <div class="section-heading">
+        <div class="badge-tag">LANGKAH KERJA</div>
+        <h2>B. Tahapan Analisis Data</h2>
+        <p>Analisis data dilakukan secara berurutan dalam 6 langkah. Klik setiap nomor tahap untuk melihat penjelasan dan contohnya!</p>
+      </div>
+
+      <div class="stepper-container">
+        <!-- TAB BULATAN TAHAPAN 1-6 -->
+        <div class="stepper-indicators">
+          <button class="step-node active" data-step="1" onclick="goToStep(1)">
+            <span class="step-num">1</span>
+            <span class="step-name">Mengumpulkan</span>
+          </button>
+          <div class="step-line"></div>
+          <button class="step-node" data-step="2" onclick="goToStep(2)">
+            <span class="step-num">2</span>
+            <span class="step-name">Membersihkan</span>
+          </button>
+          <div class="step-line"></div>
+          <button class="step-node" data-step="3" onclick="goToStep(3)">
+            <span class="step-num">3</span>
+            <span class="step-name">Mengolah</span>
+          </button>
+          <div class="step-line"></div>
+          <button class="step-node" data-step="4" onclick="goToStep(4)">
+            <span class="step-num">4</span>
+            <span class="step-name">Visualisasi</span>
+          </button>
+          <div class="step-line"></div>
+          <button class="step-node" data-step="5" onclick="goToStep(5)">
+            <span class="step-num">5</span>
+            <span class="step-name">Menafsirkan</span>
+          </button>
+          <div class="step-line"></div>
+          <button class="step-node" data-step="6" onclick="goToStep(6)">
+            <span class="step-num">6</span>
+            <span class="step-name">Menyajikan</span>
+          </button>
+        </div>
+
+        <!-- TAMPILAN KARTU TAHAP AKTIF -->
+        <div class="step-card-active" id="stepCard">
+          <div class="step-card-header">
+            <div class="step-tag" id="stepBadge">Tahap 1 dari 6</div>
+            <h3 id="stepTitle">1️⃣ Mengumpulkan Data</h3>
+          </div>
+          <div class="step-card-body">
+            <div class="step-text-box">
+              <span class="step-subheading">📌 Penjelasan:</span>
+              <p id="stepDescText">Menentukan tujuan dan mengambil data dari sumber yang relevan.</p>
+            </div>
+            <div class="step-example-card">
+              <span class="step-subheading">💡 Contoh Sederhana:</span>
+              <p id="stepExampleText">Membagikan kuesioner atau mencatat data ekstrakurikuler yang dipilih oleh siswa kelas VIII atau IX.</p>
+            </div>
+          </div>
+          <div class="step-nav-buttons">
+            <button class="btn btn-outline btn-sm" id="btnPrevStep" onclick="prevStep()" disabled>⬅ Tahap Sebelumnya</button>
+            <span class="step-counter" id="stepCounterText">Langkah 1 / 6</span>
+            <button class="btn btn-primary btn-sm" id="btnNextStep" onclick="nextStep()">Tahap Selanjutnya ➡</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALUR CEPAT 6 TAHAP -->
+      <div class="chain-summary">
+        <h4>Urutan Lengkap 6 Tahapan Analisis Data:</h4>
+        <div class="chain-items">
+          <span class="chain-item">1. Mengumpulkan Data</span>
+          <span class="chain-sep">➔</span>
+          <span class="chain-item">2. Membersihkan Data</span>
+          <span class="chain-sep">➔</span>
+          <span class="chain-item">3. Mengolah & Menganalisis</span>
+          <span class="chain-sep">➔</span>
+          <span class="chain-item">4. Memvisualisasikan Data</span>
+          <span class="chain-sep">➔</span>
+          <span class="chain-item">5. Menafsirkan Data</span>
+          <span class="chain-sep">➔</span>
+          <span class="chain-item">6. Menyajikan Hasil</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 4. MENU AKTIVITAS -->
+    <!-- ============================================== -->
+    <section id="aktivitas" class="content-section">
+      <div class="section-heading">
+        <div class="badge-tag">ZONA INTERAKTIF KELAS</div>
+        <h2>🎮 Aktivitas Pembelajaran</h2>
+        <p>Aktivitas interaktif seru: Urutkan tahapan, jodohkan visualisasi, baca grafik HOTS, dan Ujian Memori Cepat Clash of Champions!</p>
+      </div>
+
+      <!-- TAB PILIHAN AKTIVITAS DI DALAM MENU AKTIVITAS (4 AKTIVITAS) -->
+      <div class="activity-nav-tabs">
+        <button class="act-tab active" data-act="1" onclick="selectActivityTab(1)">
+          <span>🧩 Aktivitas 1: Urutkan Tahap</span>
+        </button>
+        <button class="act-tab" data-act="2" onclick="selectActivityTab(2)">
+          <span>🔗 Aktivitas 2: Jodohkan Visualisasi</span>
+        </button>
+        <button class="act-tab" data-act="3" onclick="selectActivityTab(3)">
+          <span>📊 Aktivitas 3: Baca Grafik HOTS</span>
+        </button>
+        <button class="act-tab act-tab-highlight" data-act="4" onclick="selectActivityTab(4)">
+          <span>⚡ Aktivitas 4: Clash of Champions (COC)</span>
+        </button>
+        <button class="act-tab act-tab-battle" data-act="5" onclick="selectActivityTab(5)">
+          <span>🔥 Aktivitas 5: Battle Regu Kelas</span>
+        </button>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- AKTIVITAS 1: URUTKAN TAHAP ANALISIS DATA -->
+      <!-- ============================================== -->
+      <div class="activity-section-block active" id="actBlock1">
+        <div class="activity-main-card">
+          <div class="act-header">
+            <div>
+              <h3>🧩 Aktivitas 1 — Urutkan Tahap Analisis Data</h3>
+              <p>Susun kartu tahapan berikut dengan cara menyeret (drag & drop) atau klik tombol panah (⬆/⬇) agar urutannya benar dari 1 sampai 6.</p>
+            </div>
+            <div class="act-header-actions">
+              <button class="btn-how-to-play" onclick="showHowToPlay(1)" title="Petunjuk Cara Bermain Aktivitas 1">📖 Cara Bermain</button>
+              <div class="act-badge" id="act1BadgeStatus">Skor: - / 100</div>
+            </div>
+          </div>
+
+          <!-- DRAGGABLE LIST -->
+          <div class="drag-list" id="dragList">
+            <!-- Kartu dibuat dinamis oleh script.js -->
+          </div>
+
+          <!-- FEEDBACK -->
+          <div class="feedback-alert" id="act1Alert" style="display:none;"></div>
+
+          <!-- ACTION BUTTONS -->
+          <div class="act-controls">
+            <button class="btn btn-primary" onclick="checkActivity1()">
+              <span>Periksa Jawaban</span>
+            </button>
+            <button class="btn btn-outline" onclick="resetActivity1()">
+              <span>Ulangi</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- AKTIVITAS 2: JODOHKAN VISUALISASI -->
+      <!-- ============================================== -->
+      <div class="activity-section-block" id="actBlock2">
+        <div class="activity-main-card">
+          <div class="act-header">
+            <div>
+              <h3>🔗 Aktivitas 2 — Jodohkan Visualisasi</h3>
+              <p>Petunjuk: Klik salah satu kartu jenis visualisasi di sisi kiri, kemudian klik kartu fungsi yang cocok di sisi kanan.</p>
+            </div>
+            <div class="act-header-actions">
+              <button class="btn-how-to-play" onclick="showHowToPlay(2)" title="Petunjuk Cara Bermain Aktivitas 2">📖 Cara Bermain</button>
+              <div class="act-badge" id="act2PairCount">Pasangan Benar: 0 / 5</div>
+            </div>
+          </div>
+
+          <!-- DUA SISI MENJODOHKAN -->
+          <div class="matching-area">
+            <div class="match-side">
+              <h4 class="match-col-title">Sisi Kiri: Jenis Visualisasi</h4>
+              <div class="match-cards" id="matchLeftContainer">
+                <!-- Generated by script.js -->
+              </div>
+            </div>
+
+            <div class="match-side">
+              <h4 class="match-col-title">Sisi Kanan: Fungsi Visualisasi</h4>
+              <div class="match-cards" id="matchRightContainer">
+                <!-- Generated by script.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- FEEDBACK -->
+          <div class="feedback-alert" id="act2Alert" style="display:none;"></div>
+
+          <!-- ACTIONS -->
+          <div class="act-controls">
+            <button class="btn btn-primary" onclick="checkActivity2()">
+              <span>Periksa</span>
+            </button>
+            <button class="btn btn-outline" onclick="resetActivity2()">
+              <span>Ulangi Aktivitas</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- AKTIVITAS 3: BACA GRAFIK (HOTS) -->
+      <!-- ============================================== -->
+      <div class="activity-section-block" id="actBlock3">
+        <div class="activity-main-card">
+          <div class="act-header">
+            <div>
+              <div class="hots-banner-tag">🔥 SOAL HOTS (Higher Order Thinking Skills)</div>
+              <h3>📊 Aktivitas 3 — Analisis & Evaluasi Grafik HOTS</h3>
+              <p>Cermati tabel dan diagram batang ganda di bawah ini secara kritis untuk memecahkan 3 tantangan analitis tingkat tinggi (analisis selisih, komparasi proporsi, & pengambilan keputusan solutif)!</p>
+            </div>
+            <div class="act-header-actions">
+              <button class="btn-how-to-play" onclick="showHowToPlay(3)" title="Petunjuk Cara Bermain Aktivitas 3">📖 Cara Bermain</button>
+              <div class="act-badge" id="act3BadgeScore">Skor: 0 / 3</div>
+            </div>
+          </div>
+
+          <!-- TABEL DAN GRAFIK -->
+          <div class="graph-data-layout">
+            <!-- Tabel Data -->
+            <div class="data-table-wrapper">
+              <h4>📋 Tabel Data Siswa</h4>
+              <table class="simple-table">
+                <thead>
+                  <tr>
+                    <th>Kelas</th>
+                    <th>Laki-laki</th>
+                    <th>Perempuan</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>7A</td><td>15</td><td>10</td><td>25</td></tr>
+                  <tr><td>7B</td><td>12</td><td>14</td><td>26</td></tr>
+                  <tr class="row-highlight"><td><strong>7C</strong></td><td><strong>18</strong></td><td>7</td><td>25</td></tr>
+                  <tr class="row-highlight-girl"><td><strong>8A</strong></td><td>11</td><td><strong>16</strong></td><td>27</td></tr>
+                  <tr><td>8B</td><td>14</td><td>13</td><td>27</td></tr>
+                </tbody>
+              </table>
+              <p class="table-caption">*Perhatikan total siswa serta rasio perbandingan laki-laki dan perempuan di tiap kelas.</p>
+            </div>
+
+            <!-- Canvas Chart.js -->
+            <div class="graph-chart-wrapper">
+              <h4>📈 Diagram Batang Ganda Interaktif (Chart.js)</h4>
+              <div class="chart-box-container">
+                <canvas id="chartAct3"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 PERTANYAAN ANALISIS HOTS -->
+          <div class="questions-panel">
+            <!-- Pertanyaan 1 HOTS (Analisis Disparitas / Kesenjangan Gender) -->
+            <div class="q-item hots-q-item" id="act3Q1Card">
+              <div class="q-text-header">
+                <span class="q-number-bubble">1</span>
+                <div>
+                  <span class="q-hots-category">Level C4: Analisis Kesenjangan Data</span>
+                  <p>Berdasarkan grafik dan tabel, kelas manakah yang memiliki <strong>ketimpangan (selisih) jumlah siswa laki-laki dan perempuan paling mencolok</strong>, dan berapa nilai selisihnya?</p>
+                </div>
+              </div>
+              <div class="q-choices hots-choices">
+                <button class="btn-choice" onclick="chooseAct3(1, 'A', this)">
+                  <strong>A. Kelas 7A</strong> — Selisih 5 siswa (15 Laki-laki vs 10 Perempuan)
+                </button>
+                <button class="btn-choice" onclick="chooseAct3(1, 'B', this)">
+                  <strong>B. Kelas 7B</strong> — Selisih 2 siswa (12 Laki-laki vs 14 Perempuan)
+                </button>
+                <button class="btn-choice" onclick="chooseAct3(1, 'C', this)">
+                  <strong>C. Kelas 7C</strong> — Selisih 11 siswa (18 Laki-laki vs 7 Perempuan, kesenjangan tertinggi)
+                </button>
+                <button class="btn-choice" onclick="chooseAct3(1, 'D', this)">
+                  <strong>D. Kelas 8B</strong> — Selisih 1 siswa (14 Laki-laki vs 13 Perempuan, paling heterogen)
+                </button>
+              </div>
+              <div class="q-status-msg" id="act3Msg1" style="display:none;"></div>
+            </div>
+
+            <!-- Pertanyaan 2 HOTS (Komparasi Rasio Antar Jenjang Kelas 7 vs Kelas 8) -->
+            <div class="q-item hots-q-item" id="act3Q2Card">
+              <div class="q-text-header">
+                <span class="q-number-bubble">2</span>
+                <div>
+                  <span class="q-hots-category">Level C4/C5: Komparasi Proporsi & Rasio Data</span>
+                  <p>Jika sekolah ingin membuat program kepemimpinan siswi putri, berdasarkan perbandingan data jenjang Kelas 7 (7A, 7B, 7C) dan Kelas 8 (8A, 8B), <strong>kesimpulan analitis manakah yang paling valid dan akurat</strong>?</p>
+                </div>
+              </div>
+              <div class="q-choices hots-choices">
+                <button class="btn-choice" onclick="chooseAct3(2, 'A', this)">
+                  <strong>A. Jenjang Kelas 8</strong> memiliki proporsi persentase siswi perempuan lebih tinggi (29 dari 54 siswa = <strong>53,7%</strong>) dibandingkan Kelas 7 (31 dari 76 siswa = <strong>40,8%</strong>).
+                </button>
+                <button class="btn-choice" onclick="chooseAct3(2, 'B', this)">
+                  <strong>B. Jenjang Kelas 7</strong> memiliki proporsi siswi lebih unggul karena jumlah nominal siswinya lebih banyak (31 orang).
+                </button>
+                <button class="btn-choice" onclick="chooseAct3(2, 'C', this)">
+                  <strong>C. Kedua jenjang</strong> memiliki rasio proporsi siswi yang sama persis 50% terhadap total siswanya.
+                </button>
+                <button class="btn-choice" onclick="chooseAct3(2, 'D', this)">
+                  <strong>D. Data grafik</strong> tidak memungkinkan untuk membandingkan proporsi antarkedua jenjang kelas.
+                </button>
+              </div>
+              <div class="q-status-msg" id="act3Msg2" style="display:none;"></div>
+            </div>
+
+            <!-- Pertanyaan 3 HOTS (Evaluasi & Pemecahan Masalah Solutif Berbasis Data) -->
+            <div class="q-item hots-q-item" id="act3Q3Card">
+              <div class="q-text-header">
+                <span class="q-number-bubble">3</span>
+                <div>
+                  <span class="q-hots-category">Level C5/C6: Evaluasi & Pengambilan Keputusan Solutif</span>
+                  <p>Guru pembina mengadakan kegiatan pramuka beregu putri di mana masing-masing kelas idealnya membentuk regu beranggotakan <strong>minimal 8 siswi</strong>. Berdasarkan grafik, <strong>keputusan berbasis data apa yang paling tepat dan solutif</strong> diambil?</p>
+                </div>
+              </div>
+              <div class="q-choices hots-choices">
+                <button class="btn-choice" onclick="chooseAct3(3, 'A', this)">
+                  <strong>A. Kelas 7C kekurangan 1 siswi putri</strong> (hanya ada 7 orang), sehingga solusinya dapat berkolaborasi meminjam siswi dari kelas 7B yang memiliki surplus 14 siswi.
+                </button>
+                <button class="btn-choice" onclick="chooseAct3(3, 'B', this)">
+                  <strong>B. Kelas 8A harus dibatalkan</strong> keikutsertaannya karena jumlah siswi perempuannya melebihi kuota maksimal.
+                </button>
+                <button class="btn-choice" onclick="chooseAct3(3, 'C', this)">
+                  <strong>C. Seluruh kelas 7 dibatalkan</strong> karena total siswanya lebih banyak dari kelas 8.
+                </button>
+                <button class="btn-choice" onclick="chooseAct3(3, 'D', this)">
+                  <strong>D. Mengubah syarat</strong> regu pramuka menjadi hanya diisi oleh siswa laki-laki saja.
+                </button>
+              </div>
+              <div class="q-status-msg" id="act3Msg3" style="display:none;"></div>
+            </div>
+          </div>
+
+          <div class="act-controls">
+            <button class="btn btn-outline" onclick="resetActivity3()">
+              <span>🔄 Reset Jawaban Pertanyaan HOTS</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- AKTIVITAS 4: CLASH OF CHAMPIONS (COC RUANG GURU) -->
+      <!-- ============================================== -->
+      <div class="activity-section-block" id="actBlock4">
+        <div class="activity-main-card coc-arena-card">
+          <!-- Banner Clash of Champions -->
+          <div class="coc-banner-head">
+            <div class="coc-top-row">
+              <div class="coc-badge-live">⚡ ARENA CLASH OF CHAMPIONS</div>
+              <button class="btn-how-to-play" onclick="showHowToPlay(4)" title="Petunjuk Cara Bermain Aktivitas 4">📖 Cara Bermain</button>
+            </div>
+            <h3 class="coc-title">Memory Battle: Tantangan Memori Juara Data</h3>
+            <p class="coc-subtitle">Terinspirasi dari game show Ruang Guru <em>Clash of Champions</em>! Uji ketajaman ingatan visualmu: hafalkan letak kartu konsep & grafik data, lalu buka pasangannya secepat kilat untuk meraih predikat <strong>GRAND CHAMPION</strong>!</p>
+          </div>
+
+          <!-- DASHBOARD STATISTIK LIVE COC -->
+          <div class="coc-dashboard">
+            <div class="coc-stat-box">
+              <span class="coc-stat-label">⏱️ STOPWATCH</span>
+              <span class="coc-stat-value timer-glow" id="cocTimerText">00:00.0</span>
+            </div>
+            <div class="coc-stat-box">
+              <span class="coc-stat-label">🎯 LANGKAH</span>
+              <span class="coc-stat-value" id="cocMovesText">0</span>
+            </div>
+            <div class="coc-stat-box">
+              <span class="coc-stat-label">🔥 COMBO</span>
+              <span class="coc-stat-value streak-glow" id="cocStreakText">x0</span>
+            </div>
+            <div class="coc-stat-box">
+              <span class="coc-stat-label">👑 REKOR TERBAIK</span>
+              <span class="coc-stat-value best-glow" id="cocBestText">-</span>
+            </div>
+            <div class="coc-stat-box coc-audio-toggle" onclick="toggleCocAudio()" title="Nyalakan/Matikan Efek Suara">
+              <span class="coc-stat-label">🔊 AUDIO SFX</span>
+              <span class="coc-stat-value" id="cocAudioStatus">ON</span>
+            </div>
+          </div>
+
+          <!-- NOTIFIKASI MEMORY FLASH COUNTDOWN (5 DETIK) -->
+          <div class="coc-countdown-banner" id="cocCountdownBanner" style="display:none;">
+            <div class="countdown-pulse" id="cocCountdownNumber">5</div>
+            <p id="cocCountdownLabel">HAFALKAN SELURUH KARTU SEBELUM DITUTUP! (5 DETIK)</p>
+          </div>
+
+          <!-- GRID 12 KARTU MEMORI (3D FLIP CARDS) -->
+          <div class="coc-grid-container" id="cocGridContainer">
+            <!-- Kartu akan dirender dinamis oleh script.js -->
+          </div>
+
+          <!-- OVERLAY KETIKA SELESAI MENANG (HASIL COC CHAMPION) -->
+          <div class="coc-victory-modal" id="cocVictoryModal" style="display:none;">
+            <div class="coc-victory-box">
+              <div class="coc-trophy-anim" id="cocTrophyIcon">🏆</div>
+              <h2 class="coc-victory-title">CHAMPION COMPLETE!</h2>
+              <div class="coc-rank-badge" id="cocRankBadge">GRAND CHAMPION 🏆</div>
+              <p class="coc-rank-desc" id="cocRankDesc">Kecepatan & ketajaman memorimu setara finalis Clash of Champions!</p>
+              
+              <div class="coc-finish-stats">
+                <div class="coc-fstat">
+                  <span>Waktu Tempuh:</span>
+                  <strong id="cocFinishTime">00:18.4</strong>
+                </div>
+                <div class="coc-fstat">
+                  <span>Total Langkah:</span>
+                  <strong id="cocFinishMoves">14 Kali</strong>
+                </div>
+                <div class="coc-fstat">
+                  <span>Max Combo:</span>
+                  <strong id="cocFinishCombo">x4 🔥</strong>
+                </div>
+              </div>
+
+              <div class="coc-modal-actions">
+                <button class="btn btn-primary" onclick="startCocGame()">
+                  <span>⚡ Main Lagi & Pecahkan Rekor</span>
+                </button>
+                <button class="btn btn-outline" onclick="selectActivityTab(3)">
+                  <span>📊 Kembali ke Baca Grafik</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- KONTROL ARENA COC -->
+          <div class="act-controls coc-controls">
+            <button class="btn btn-primary" id="btnStartCoc" onclick="startCocGame()">
+              <span>🚀 Mulai Battle Champion Baru</span>
+            </button>
+            <button class="btn btn-outline" onclick="resetCocBestRecord()">
+              <span>🗑️ Reset Rekor Terbaik</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- ============================================== -->
+      <!-- AKTIVITAS 5: BATTLE REGU KELAS (DUEL DATA SERU) -->
+      <!-- ============================================== -->
+      <div class="activity-section-block" id="actBlock5">
+        <div class="activity-main-card battle-arena-card">
+          <!-- Banner Battle Regu -->
+          <div class="battle-banner-head">
+            <div class="battle-top-row">
+              <div class="battle-badge-live">🔥 MODE KOMPETISI MULTIPLAYER KELAS</div>
+              <button class="btn-how-to-play" onclick="showHowToPlay(5)" title="Petunjuk Cara Bermain Aktivitas 5">📖 Cara Bermain</button>
+            </div>
+            <h3 class="battle-title">🏆 Battle Regu Kelas: Duel Analisis Data</h3>
+            <p class="battle-subtitle">Dirancang khusus untuk dimainkan beramai-ramai oleh seluruh siswa di kelas dengan proyektor! Bagi kelas menjadi 2 hingga 6 regu, putar Roda Tantangan Keberuntungan, dan rebut poin tertinggi untuk menjadi Juara Kelas!</p>
+          </div>
+
+          <!-- SETUP TIM & PAPAN SKOR LIVE KELAS -->
+          <div class="battle-teams-wrapper">
+            <div class="battle-setup-bar">
+              <span class="setup-label">⚙️ Jumlah Regu:</span>
+              <div class="team-count-btns">
+                <button class="btn-team-count" id="btnTeam2" onclick="setTeamCount(2)">2 Regu</button>
+                <button class="btn-team-count" id="btnTeam3" onclick="setTeamCount(3)">3 Regu</button>
+                <button class="btn-team-count" id="btnTeam4" onclick="setTeamCount(4)">4 Regu</button>
+                <button class="btn-team-count" id="btnTeam5" onclick="setTeamCount(5)">5 Regu</button>
+                <button class="btn-team-count active" id="btnTeam6" onclick="setTeamCount(6)">6 Regu (Lengkap) 🏆</button>
+              </div>
+              <button class="btn btn-sm btn-outline btn-reset-scores" onclick="resetBattleScores()">🔄 Reset Skor</button>
+            </div>
+
+            <!-- 4 KARTU SKOR LIVE REGUL KELAS -->
+            <div class="scoreboard-grid" id="scoreboardGrid">
+              <!-- Kartu Skor Tim Alpha (Biru) -->
+              <div class="team-score-card team-alpha" id="cardTeamAlpha">
+                <div class="team-head">
+                  <span class="team-icon">🦅</span>
+                  <div class="team-info">
+                    <h4 class="team-name" contenteditable="true" title="Klik untuk ubah nama regu">Regu Alpha</h4>
+                    <span class="team-color-badge">Tim Biru</span>
+                  </div>
+                </div>
+                <div class="team-score-val" id="scoreAlpha">0</div>
+                <div class="score-adjust-btns">
+                  <button class="btn-score add-100" onclick="adjustTeamScore('alpha', 100)">+100</button>
+                  <button class="btn-score add-50" onclick="adjustTeamScore('alpha', 50)">+50</button>
+                  <button class="btn-score sub-50" onclick="adjustTeamScore('alpha', -50)">-50</button>
+                </div>
+              </div>
+
+              <!-- Kartu Skor Tim Beta (Merah) -->
+              <div class="team-score-card team-beta" id="cardTeamBeta">
+                <div class="team-head">
+                  <span class="team-icon">🦁</span>
+                  <div class="team-info">
+                    <h4 class="team-name" contenteditable="true" title="Klik untuk ubah nama regu">Regu Beta</h4>
+                    <span class="team-color-badge">Tim Merah</span>
+                  </div>
+                </div>
+                <div class="team-score-val" id="scoreBeta">0</div>
+                <div class="score-adjust-btns">
+                  <button class="btn-score add-100" onclick="adjustTeamScore('beta', 100)">+100</button>
+                  <button class="btn-score add-50" onclick="adjustTeamScore('beta', 50)">+50</button>
+                  <button class="btn-score sub-50" onclick="adjustTeamScore('beta', -50)">-50</button>
+                </div>
+              </div>
+
+              <!-- Kartu Skor Tim Gamma (Hijau) -->
+              <div class="team-score-card team-gamma" id="cardTeamGamma">
+                <div class="team-head">
+                  <span class="team-icon">🐯</span>
+                  <div class="team-info">
+                    <h4 class="team-name" contenteditable="true" title="Klik untuk ubah nama regu">Regu Gamma</h4>
+                    <span class="team-color-badge">Tim Hijau</span>
+                  </div>
+                </div>
+                <div class="team-score-val" id="scoreGamma">0</div>
+                <div class="score-adjust-btns">
+                  <button class="btn-score add-100" onclick="adjustTeamScore('gamma', 100)">+100</button>
+                  <button class="btn-score add-50" onclick="adjustTeamScore('gamma', 50)">+50</button>
+                  <button class="btn-score sub-50" onclick="adjustTeamScore('gamma', -50)">-50</button>
+                </div>
+              </div>
+
+              <!-- Kartu Skor Tim Delta (Ungu) -->
+              <div class="team-score-card team-delta" id="cardTeamDelta">
+                <div class="team-head">
+                  <span class="team-icon">⚡</span>
+                  <div class="team-info">
+                    <h4 class="team-name" contenteditable="true" title="Klik untuk ubah nama regu">Regu Delta</h4>
+                    <span class="team-color-badge">Tim Ungu</span>
+                  </div>
+                </div>
+                <div class="team-score-val" id="scoreDelta">0</div>
+                <div class="score-adjust-btns">
+                  <button class="btn-score add-100" onclick="adjustTeamScore('delta', 100)">+100</button>
+                  <button class="btn-score add-50" onclick="adjustTeamScore('delta', 50)">+50</button>
+                  <button class="btn-score sub-50" onclick="adjustTeamScore('delta', -50)">-50</button>
+                </div>
+              </div>
+
+              <!-- Kartu Skor Tim Epsilon (Oranye) -->
+              <div class="team-score-card team-epsilon" id="cardTeamEpsilon">
+                <div class="team-head">
+                  <span class="team-icon">🦊</span>
+                  <div class="team-info">
+                    <h4 class="team-name" contenteditable="true" title="Klik untuk ubah nama regu">Regu Epsilon</h4>
+                    <span class="team-color-badge">Tim Oranye</span>
+                  </div>
+                </div>
+                <div class="team-score-val" id="scoreEpsilon">0</div>
+                <div class="score-adjust-btns">
+                  <button class="btn-score add-100" onclick="adjustTeamScore('epsilon', 100)">+100</button>
+                  <button class="btn-score add-50" onclick="adjustTeamScore('epsilon', 50)">+50</button>
+                  <button class="btn-score sub-50" onclick="adjustTeamScore('epsilon', -50)">-50</button>
+                </div>
+              </div>
+
+              <!-- Kartu Skor Tim Zeta (Teal) -->
+              <div class="team-score-card team-zeta" id="cardTeamZeta">
+                <div class="team-head">
+                  <span class="team-icon">🐺</span>
+                  <div class="team-info">
+                    <h4 class="team-name" contenteditable="true" title="Klik untuk ubah nama regu">Regu Zeta</h4>
+                    <span class="team-color-badge">Tim Teal</span>
+                  </div>
+                </div>
+                <div class="team-score-val" id="scoreZeta">0</div>
+                <div class="score-adjust-btns">
+                  <button class="btn-score add-100" onclick="adjustTeamScore('zeta', 100)">+100</button>
+                  <button class="btn-score add-50" onclick="adjustTeamScore('zeta', 50)">+50</button>
+                  <button class="btn-score sub-50" onclick="adjustTeamScore('zeta', -50)">-50</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RODA PUTAR & PANGGUNG TANTANGAN KELAS -->
+          <div class="battle-interactive-layout">
+            <!-- Sisi Kiri: Roda Putar Interaktif -->
+            <div class="wheel-stage-box">
+              <div class="wheel-pointer-top">🔻</div>
+              <div class="wheel-canvas-wrap">
+                <canvas id="battleWheelCanvas" width="340" height="340"></canvas>
+                <div class="wheel-center-button" onclick="spinBattleWheel()" title="Klik untuk Memutar!">
+                  <span>PUTAR</span>
+                </div>
+              </div>
+              <div class="wheel-actions">
+                <button class="btn btn-primary btn-spin-wheel" id="btnSpinWheel" onclick="spinBattleWheel()">
+                  <span>🎰 PUTAR RODA TANTANGAN!</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Sisi Kanan: Panggung Tantangan & Soal -->
+            <div class="challenge-stage-box">
+              <div class="challenge-header-bar">
+                <span class="challenge-category-pill" id="challengeCategoryPill">Kategori: Belum Diputar</span>
+                <span class="challenge-points-pill" id="challengePointsPill">+0 Poin</span>
+              </div>
+
+              <div class="challenge-body" id="challengeBodyArea">
+                <!-- Tampilan Awal Sebelum Roda Diputar -->
+                <div class="challenge-placeholder" id="challengePlaceholder">
+                  <div class="placeholder-icon">🎡</div>
+                  <h4>Siapakah Regu Tercepat & Terhebat di Kelas?</h4>
+                  <p>Tekan tombol <strong>"PUTAR RODA TANTANGAN"</strong> di samping untuk mengundi soal dan poin rebutan untuk kelas!</p>
+                </div>
+
+                <!-- Tampilan Tantangan Aktif -->
+                <div class="challenge-active-card" id="challengeActiveCard" style="display:none;">
+                  <h4 class="challenge-title" id="challengeTitle">Judul Tantangan</h4>
+                  <div class="challenge-desc" id="challengeDesc">Deskripsi tantangan...</div>
+                  
+                  <!-- Visual Case Grafik / Tabel -->
+                  <div class="challenge-visual-box" id="challengeVisualBox"></div>
+
+                  <!-- Timer Countdown Rebutan 15 Detik -->
+                  <div class="challenge-timer-row">
+                    <div class="c-timer-badge" id="challengeTimerBadge">⏱️ Waktu Rebutan: 15s</div>
+                    <div class="c-timer-btns">
+                      <button class="btn btn-sm btn-outline" id="btnStartChallengeTimer" onclick="startChallengeCountdown(15)">▶ Mulai Hitung Mundur</button>
+                      <button class="btn btn-sm btn-outline" onclick="stopChallengeCountdown()">⏹ Stop</button>
+                    </div>
+                  </div>
+
+                  <!-- Kunci Jawaban Guru & Pembahasan -->
+                  <div class="challenge-answer-reveal">
+                    <button class="btn btn-sm btn-outline" id="btnToggleRevealAnswer" onclick="toggleChallengeAnswer()">
+                      👁️ Buka Kunci Jawaban & Pembahasan
+                    </button>
+                    <div class="challenge-revealed-ans" id="challengeRevealedAns" style="display:none;">
+                      <div class="ans-badge-key">KUNCI JAWABAN GURU:</div>
+                      <p id="challengeAnswerText">Jawaban...</p>
+                    </div>
+                  </div>
+
+                  <!-- Tombol Pemberian Poin Cepat ke Pemenang -->
+                  <div class="award-points-box">
+                    <span class="award-label">🏆 Klik Regu yang Menjawab Benar (Poin Otomatis Masuk):</span>
+                    <div class="award-btn-group" id="awardBtnGroup">
+                      <!-- Diisi dinamis oleh script.js -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KONTROL BAWAH: NOBATKAN JUARA KELAS -->
+          <div class="battle-bottom-controls">
+            <button class="btn btn-secondary btn-coronate" onclick="coronateClassroomWinner()">
+              <span>👑 Nobatkan Regu Juara Kelas!</span>
+            </button>
+            <button class="btn btn-outline" onclick="nextRandomChallengeDirect()">
+              <span>⏩ Ganti Tantangan Baru</span>
+            </button>
+          </div>
+
+          <!-- MODAL PENOBATAN JUARA KELAS (CONFETTI & VICTORY) -->
+          <div class="classroom-victory-modal" id="classroomVictoryModal" style="display:none;">
+            <div class="classroom-victory-box">
+              <div class="coronation-crown">👑</div>
+              <h2 class="coronation-title">SELAMAT KEPADA SANG JUARA!</h2>
+              <div class="winner-team-banner" id="winnerTeamBanner">REGU ALPHA JUARA 1 🏆</div>
+              <p class="winner-congrats-text" id="winnerCongratsText">Luar biasa! Analisis data, kerja sama regu, dan kecepatan berpikir tim kamu mengungguli seluruh kelas!</p>
+              
+              <div class="podium-scores-list" id="podiumScoresList">
+                <!-- Peringkat skor seluruh regu -->
+              </div>
+
+              <div class="coronation-actions">
+                <button class="btn btn-primary" onclick="closeClassroomVictory()">
+                  <span>🎉 Lanjut Main Ronde Baru</span>
+                </button>
+                <button class="btn btn-outline" onclick="resetBattleScores(); closeClassroomVictory();">
+                  <span>🔄 Reset Skor Pertandingan</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 5. MENU KUIS -->
+    <!-- ============================================== -->
+    <section id="kuis" class="content-section">
+      <div class="section-heading">
+        <div class="badge-tag">EVALUASI AKHIR</div>
+        <h2>📝 Kuis Interaktif</h2>
+        <p>Jawab 10 soal pilihan ganda berikut untuk menguji pemahaman materi yang telah kamu pelajari.</p>
+      </div>
+
+      <div class="quiz-stage-container">
+        <!-- KARTU SOAL AKTIF (1 SOAL PER HALAMAN) -->
+        <div class="quiz-box" id="quizPlayingBox">
+          <div class="quiz-meta-bar">
+            <span class="quiz-badge-step" id="quizProgressText">SOAL 1 / 10</span>
+            <span class="quiz-badge-score" id="quizRunningScore">Skor: 0</span>
+          </div>
+
+          <!-- Progress bar kuis -->
+          <div class="quiz-bar-wrap">
+            <div class="quiz-bar-fill" id="quizBarFill" style="width: 10%;"></div>
+          </div>
+
+          <div class="quiz-question-holder">
+            <h3 class="quiz-question-prompt" id="quizQuestionTitle">Visualisasi data digunakan untuk...</h3>
+          </div>
+
+          <!-- Pilihan Jawaban (A, B, C, D) -->
+          <div class="quiz-options-box" id="quizOptionsList">
+            <!-- Generated by script.js -->
+          </div>
+
+          <!-- Feedback Alert -->
+          <div class="quiz-feedback-banner" id="quizFeedbackBanner" style="display:none;"></div>
+
+          <!-- Tombol Lanjut Soal -->
+          <div class="quiz-next-action">
+            <button class="btn btn-primary" id="btnNextQuestion" onclick="nextQuestion()" style="display:none;">
+              Lanjut ke Soal Berikutnya ➡
+            </button>
+          </div>
+        </div>
+
+        <!-- LAYAR HASIL AKHIR KUIS -->
+        <div class="quiz-finish-card" id="quizFinishCard" style="display:none;">
+          <div class="trophy-icon" id="quizFinalIcon">🏆</div>
+          <h2 class="finish-heading">Kuis Telah Selesai!</h2>
+          <div class="score-display-circle">
+            <span class="score-number" id="quizFinalScore">100</span>
+            <span class="score-denom">/ 100</span>
+          </div>
+          <div class="grade-category" id="quizFinalCategory">Sangat Baik 🏆</div>
+          <p class="grade-description" id="quizFinalNote">Luar biasa! Pemahamanmu tentang Analisis dan Visualisasi Data sangat memuaskan.</p>
+
+          <div class="score-stats-grid">
+            <div class="stat-box stat-correct">
+              <span>Jawaban Benar:</span>
+              <strong id="statCorrectNum">10</strong>
+            </div>
+            <div class="stat-box stat-wrong">
+              <span>Jawaban Salah:</span>
+              <strong id="statWrongNum">0</strong>
+            </div>
+          </div>
+
+          <div class="finish-controls">
+            <button class="btn btn-primary" onclick="restartQuiz()">
+              <span>Ulangi Kuis</span>
+            </button>
+            <button class="btn btn-outline" onclick="navigateTo('rangkuman')">
+              <span>Buka Rangkuman Materi</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 6. MENU RANGKUMAN -->
+    <!-- ============================================== -->
+    <section id="rangkuman" class="content-section">
+      <div class="section-heading">
+        <div class="badge-tag">KESIMPULAN BAB</div>
+        <h2>💡 Rangkuman Pembelajaran</h2>
+        <p>Rangkuman visual dan singkat materi Analisis Data dengan Teknik Visualisasi.</p>
+      </div>
+
+      <div class="summary-container">
+        <div class="summary-sheet">
+          <div class="summary-top-banner">
+            <span class="banner-icon">📋</span>
+            <h3>Intisari Materi yang Perlu Diingat</h3>
+          </div>
+
+          <div class="summary-points">
+            <div class="summary-point-item">
+              <div class="point-check">✓</div>
+              <div class="point-text">
+                Analisis data adalah proses mengolah data untuk mendapatkan informasi yang bermakna.
+              </div>
+            </div>
+
+            <div class="summary-point-item">
+              <div class="point-check">✓</div>
+              <div class="point-text">
+                Analisis data dilakukan melalui beberapa tahap.
+              </div>
+            </div>
+
+            <div class="summary-point-item summary-flow-item">
+              <div class="point-check">✓</div>
+              <div class="point-text">
+                <strong>Tahapannya adalah:</strong>
+                <div class="summary-pill-flow">
+                  <span class="s-pill">Mengumpulkan</span>
+                  <span class="s-arr">➔</span>
+                  <span class="s-pill">Membersihkan</span>
+                  <span class="s-arr">➔</span>
+                  <span class="s-pill">Mengolah</span>
+                  <span class="s-arr">➔</span>
+                  <span class="s-pill">Memvisualisasikan</span>
+                  <span class="s-arr">➔</span>
+                  <span class="s-pill">Menafsirkan</span>
+                  <span class="s-arr">➔</span>
+                  <span class="s-pill">Menyajikan</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="summary-point-item">
+              <div class="point-check">✓</div>
+              <div class="point-text">
+                <strong>Diagram batang</strong> digunakan untuk membandingkan kategori.
+              </div>
+            </div>
+
+            <div class="summary-point-item">
+              <div class="point-check">✓</div>
+              <div class="point-text">
+                <strong>Diagram garis</strong> digunakan untuk melihat perubahan dari waktu ke waktu.
+              </div>
+            </div>
+
+            <div class="summary-point-item">
+              <div class="point-check">✓</div>
+              <div class="point-text">
+                <strong>Diagram lingkaran</strong> digunakan untuk menunjukkan proporsi.
+              </div>
+            </div>
+
+            <div class="summary-point-item">
+              <div class="point-check">✓</div>
+              <div class="point-text">
+                <strong>Histogram</strong> digunakan untuk melihat distribusi data.
+              </div>
+            </div>
+
+            <div class="summary-point-item">
+              <div class="point-check">✓</div>
+              <div class="point-text">
+                <strong>Scatter plot</strong> digunakan untuk melihat hubungan antara dua variabel.
+              </div>
+            </div>
+          </div>
+
+          <!-- PESAN DETEKTIF DATA -->
+          <div class="detective-banner-box">
+            <div class="detective-avatar">🕵️‍♂️</div>
+            <div class="detective-msg-wrap">
+              <div class="detective-quote-text">“Jadilah detektif data! Amati data, temukan pola, lalu tarik kesimpulan.”</div>
+              <p class="detective-subtext">Data ada di sekeliling kita setiap hari. Dengan kemampuan visualisasi dan analisis data, kamu dapat memecahkan berbagai masalah dengan bijak dan tepat!</p>
+            </div>
+          </div>
+
+          <div class="summary-bottom-actions">
+            <button class="btn btn-primary" onclick="navigateTo('materi')">
+              <span>Belajar Lagi</span>
+            </button>
+            <button class="btn btn-secondary" onclick="navigateTo('aktivitas')">
+              <span>Uji Ulang di Aktivitas</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- MODAL CARA BERMAIN EDUKATIF INTERAKTIF -->
+  <div class="modal-backdrop" id="howToPlayModal" onclick="closeHowToPlayModal(event)">
+    <div class="modal-dialog modal-how-to-play" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeHowToPlayModal()" aria-label="Tutup">&times;</button>
+      <div class="modal-top">
+        <span class="modal-icon" id="htpIcon">📖</span>
+        <div>
+          <h3 id="htpTitle">Petunjuk Cara Bermain</h3>
+          <span class="modal-category" id="htpCategory">Panduan Aktivitas</span>
+        </div>
+      </div>
+      <div class="modal-content-details" id="htpContentBody">
+        <!-- Konten petunjuk diisi secara dinamis oleh JavaScript -->
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" onclick="closeHowToPlayModal()">Mengerti, Siap Bermain! 🚀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="footer-text">
+        <p><strong>Media Pembelajaran Interaktif Informatika SMP/MTs</strong></p>
+        <p>Bab 2. Analisis Data dengan Teknik Visualisasi • Dirancang untuk Pembelajaran Interaktif di Kelas</p>
+      </div>
+      <div class="footer-reset-btn-wrap">
+        <button class="btn-clear-cache" onclick="resetAllProgress()">🔄 Reset Progres Belajar</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT JS TERPISAH -->
+  <script src="script.js"></script>
+</body>
+</html>
