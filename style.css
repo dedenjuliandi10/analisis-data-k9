@@ -3228,6 +3228,15 @@ button {
   margin-bottom: 1.25rem;
   padding-bottom: 0.85rem;
   border-bottom: 2px solid #f1f5f9;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.challenge-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .challenge-category-pill {
@@ -3238,6 +3247,18 @@ button {
   background: #dbeafe;
   padding: 0.35rem 0.9rem;
   border-radius: 999px;
+}
+
+.challenge-bank-count-pill {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #065f46;
+  background: #d1fae5;
+  border: 1px solid #a7f3d0;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  letter-spacing: 0.2px;
 }
 
 .challenge-points-pill {

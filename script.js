@@ -1572,68 +1572,364 @@ const WHEEL_SECTORS = [
 
 const BATTLE_CHALLENGES = [
   {
-    category: '📊 Tebak Cepat',
-    points: 100,
-    title: 'Visualisasi Makanan Terlaris Kantin',
-    desc: 'Pengurus kantin sekolah ingin membandingkan jumlah porsi yang terjual untuk 5 jenis makanan (Bakso, Nasi Goreng, Siomay, Batagor, Mie Ayam).',
-    visual: '📋 Jenis Makanan: Bakso (80), Nasi Goreng (65), Siomay (90), Batagor (50), Mie Ayam (75).<br><strong>Pertanyaan:</strong> Diagram manakah yang paling tepat digunakan untuk membandingkan penjualan kelima makanan ini?',
-    answer: 'Diagram Batang! Karena diagram batang dirancang khusus untuk membandingkan nilai kuantitas antarbeberapa kategori data diskrit.'
+    "id": "tc-1",
+    "category": "📊 Tebak Cepat",
+    "points": 100,
+    "title": "Visualisasi Makanan Terlaris Kantin",
+    "desc": "Pengurus kantin sekolah ingin membandingkan jumlah porsi yang terjual untuk 5 jenis makanan (Bakso, Nasi Goreng, Siomay, Batagor, Mie Ayam).",
+    "visual": "📋 Data Penjualan: Bakso (80), Nasi Goreng (65), Siomay (90), Batagor (50), Mie Ayam (75).<br><strong>Pertanyaan:</strong> Diagram manakah yang paling tepat digunakan untuk membandingkan penjualan kelima makanan ini?",
+    "answer": "<strong>Diagram Batang (Bar Chart)!</strong> Karena diagram batang paling tepat digunakan untuk membandingkan jumlah/kuantitas antar-kategori data yang berbeda."
   },
   {
-    category: '🕵️ Kasus Detektif',
-    points: 150,
-    title: 'Mendeteksi 2 Data Anomali / Kotor',
-    desc: 'Detektif Data menemukan catatan tinggi badan siswa kelas VIII dalam satuan sentimeter (cm) sebagai berikut:',
-    visual: '📝 Data Mentah: [152, 148, <strong>1500</strong>, 156, <strong>-15</strong>, 160, 155].<br><strong>Tugas Regu:</strong> Sebutkan 2 data tidak masuk akal (anomali) yang wajib dibersihkan pada tahap Pembersihan Data (Data Cleaning)!',
-    answer: 'Angka 1500 cm (terlalu tinggi/salah ketik nol berlebih) dan angka -15 cm (tinggi badan tidak mungkin bernilai negatif). Keduanya harus dibersihkan!'
+    "id": "tc-2",
+    "category": "📊 Tebak Cepat",
+    "points": 100,
+    "title": "Grafik Pemantauan Suhu Pasien",
+    "desc": "Petugas UKS mencatat suhu tubuh siswa yang demam setiap jam dari pukul 07.00 hingga 13.00.",
+    "visual": "🌡️ Data Suhu: 07.00 (38.5°C), 09.00 (39.0°C), 11.00 (37.8°C), 13.00 (37.0°C).<br><strong>Pertanyaan:</strong> Jenis visualisasi manakah yang paling cocok untuk melihat tren kenaikan atau penurunan suhu dari waktu ke waktu?",
+    "answer": "<strong>Diagram Garis (Line Chart)!</strong> Karena diagram garis sangat ideal untuk melihat tren perubahan data yang berkesinambungan dari waktu ke waktu."
   },
   {
-    category: '⚡ Duel Rebutan',
-    points: 200,
-    title: 'Duel Rebutan Cepat: Urutan Tahapan Analisis',
-    desc: 'Regu yang menekan bel/mengacungkan tangan paling cepat berhak menjawab!',
-    visual: '❓ <strong>Pertanyaan Rebutan:</strong> Sebutkan dengan urutan yang tepat 4 tahap pertama dalam proses analisis data!',
-    answer: '1. Mengumpulkan Data -> 2. Membersihkan Data -> 3. Mengolah & Menganalisis Data -> 4. Memvisualisasikan Data.'
+    "id": "tc-3",
+    "category": "📊 Tebak Cepat",
+    "points": 100,
+    "title": "Identifikasi Bentuk Data Nilai Ujian",
+    "desc": "Seorang guru mengumpulkan data nilai ujian informatika: 85, 90, 78, 92, dan 88.",
+    "visual": "🔢 Kumpulan Data: [85, 90, 78, 92, 88].<br><strong>Pertanyaan:</strong> Berdasarkan bentuknya, apakah data tersebut termasuk Data Kuantitatif atau Data Kualitatif? Jelaskan alasannya!",
+    "answer": "<strong>Data Kuantitatif!</strong> Karena datanya berupa angka/bilangan yang dapat dihitung atau diukur secara langsung."
   },
   {
-    category: '🎯 Analisis Rasio',
-    points: 100,
-    title: 'Membaca Proporsi Diagram Lingkaran',
-    desc: 'Hasil survei transportasi 100 siswa menunjukkan diagram lingkaran:',
-    visual: '🥧 Juring Sepeda Motor = 50%, Juring Sepeda Kayuh = 25%, Juring Jalan Kaki = 15%, dan Juring Angkutan Umum = ?<br><strong>Pertanyaan:</strong> Berapa persen siswa yang menggunakan Angkutan Umum dan berapa jumlah siswanya?',
-    answer: '10% (100% - 50% - 25% - 15% = 10%). Karena total 100 siswa, maka jumlahnya tepat 10 siswa!'
+    "id": "tc-4",
+    "category": "📊 Tebak Cepat",
+    "points": 100,
+    "title": "Klasifikasi Data Hobi dan Warna Favorit",
+    "desc": "Ketua kelas mencatat data warna hijab siswi (\"Cokelat\", \"Biru\", \"Hitam\") dan hobi siswa (\"Futsal\", \"Membaca\", \"Melukis\").",
+    "visual": "🏷️ Data Terkumpul: Warna favorit (\"Biru\", \"Merah\") dan Hobi (\"Musik\", \"Renang\").<br><strong>Pertanyaan:</strong> Berdasarkan bentuknya, tergolong jenis data apakah warna dan hobi tersebut?",
+    "answer": "<strong>Data Kualitatif!</strong> Karena datanya berupa deskripsi, label, atau kategori dan bukan berupa angka yang dihitung."
   },
   {
-    category: '💎 Super Bonus',
-    points: 300,
-    title: 'Teka-Teki Perbedaan Diagram Batang vs Histogram',
-    desc: 'Jawab dengan tepat untuk membawa pulang 300 poin penuh!',
-    visual: '❓ <strong>Pertanyaan Super:</strong> Apa perbedaan tampilan fisik dan jenis data antara Diagram Batang dengan Histogram?',
-    answer: 'Diagram Batang batangnya memiliki celah spasi untuk kategori data kualitatif/diskrit. Sedangkan Histogram batangnya saling berdempetan tanpa celah karena mewakili kelas rentang interval data kontinu!'
+    "id": "tc-5",
+    "category": "📊 Tebak Cepat",
+    "points": 100,
+    "title": "Survei Mandiri Kebiasaan Belajar",
+    "desc": "Regu Alpha membuat angket kuesioner sendiri dan membagikannya ke 35 teman sekelas untuk diteliti.",
+    "visual": "📝 Skenario: Siswa menyebarkan angket buatan sendiri langsung ke teman-teman sekelasnya.<br><strong>Pertanyaan:</strong> Berdasarkan sumbernya, apakah data angket ini termasuk Data Primer atau Data Sekunder?",
+    "answer": "<strong>Data Primer!</strong> Karena data dikumpulkan secara langsung dari sumber aslinya (tangan pertama) oleh peneliti/siswa itu sendiri."
   },
   {
-    category: '💣 Tantangan Ekstra',
-    points: 250,
-    title: 'Analisis Evaluasi Gender Paling Seimbang',
-    desc: 'Diberikan data dua kelompok ekstrakurikuler sekolah:',
-    visual: '⚽ Ekskul Futsal: 24 Laki-laki & 6 Perempuan (Total 30).<br>♟️ Ekskul Catur: 15 Laki-laki & 15 Perempuan (Total 30).<br><strong>Pertanyaan:</strong> Ekskul manakah yang komposisi gendernya paling seimbang (heterogen) dan apa alasannya?',
-    answer: 'Ekskul Catur! Karena memiliki rasio tepat 1:1 (50% laki-laki dan 50% perempuan), sedangkan Futsal sangat didominasi laki-laki (80% vs 20%).'
+    "id": "kd-1",
+    "category": "🕵️ Kasus Detektif",
+    "points": 150,
+    "title": "Mendeteksi 2 Data Anomali / Kotor",
+    "desc": "Detektif Data menemukan catatan tinggi badan siswa kelas VIII dalam satuan cm sebagai berikut:",
+    "visual": "📝 Data Mentah: [152, 148, <strong>1500</strong>, 156, <strong>-15</strong>, 160, 155].<br><strong>Tugas Regu:</strong> Sebutkan 2 data tidak masuk akal (anomali) yang wajib dibersihkan pada tahap Pembersihan Data (Data Cleaning)!",
+    "answer": "<strong>1500 cm</strong> (kesalahan ketik kelebihan nol) dan <strong>-15 cm</strong> (tinggi badan tidak mungkin bernilai negatif). Keduanya wajib dibersihkan!"
   },
   {
-    category: '🔄 Rebut Poin',
-    points: 150,
-    title: 'Interpretasi Arah Scatter Plot',
-    desc: 'Perhatikan hubungan antara "Waktu Belajar" dan "Nilai Ujian":',
-    visual: '📈 Titik-titik pada grafik koordinat menunjukkan pola: semakin lama jam belajar siswa, titik-titik nilai ujian semakin bergerak ke atas.<br><strong>Pertanyaan:</strong> Pola korelasi apa yang terbentuk pada scatter plot tersebut?',
-    answer: 'Korelasi Positif (Hubungan Searah)! Artinya bertambahnya variabel waktu belajar diiringi dengan peningkatan nilai ujian.'
+    "id": "kd-2",
+    "category": "🕵️ Kasus Detektif",
+    "points": 150,
+    "title": "Kasus Data Duplikat & Typo Nama Kota",
+    "desc": "Pada formulir pendaftaran lomba antar-sekolah ditemukan data kota asal:",
+    "visual": "🏙️ Daftar Input: [\"Sumedang\", \"Bandung\", \"SUMEDANG\", \"Bndung\", \"Jakarta\", \"Sumedang\"].<br><strong>Tugas Detektif:</strong> Setelah dibersihkan dari duplikasi dan kesalahan ketik (typo), ada berapa kota unik yang sebenarnya?",
+    "answer": "<strong>Ada 3 kota unik:</strong> Sumedang, Bandung, dan Jakarta. Entri \"SUMEDANG\" & duplikat disatukan, serta \"Bndung\" diperbaiki menjadi \"Bandung\"."
   },
   {
-    category: '🚀 Kilat HOTS',
-    points: 200,
-    title: 'Tantangan Pengambilan Keputusan Nyata',
-    desc: 'Berdasarkan grafik rata-rata nilai mata pelajaran kelas:',
-    visual: '📊 Nilai Rata-rata: Matematika (68), IPA (72), Bahasa Indonesia (85), Informatika (88). Standar ketuntasan minimal adalah 75.<br><strong>Pertanyaan Keputusan:</strong> Dua mata pelajaran manakah yang harus diprioritaskan guru untuk program bimbingan belajar tambahan?',
-    answer: 'Matematika (68) dan IPA (72), karena kedua mata pelajaran tersebut nilainya masih di bawah standar ketuntasan minimal 75.'
+    "id": "kd-3",
+    "category": "🕵️ Kasus Detektif",
+    "points": 150,
+    "title": "Kasus Kejanggalan Jam Tidur Siswa",
+    "desc": "Detektif memeriksa data survei durasi tidur harian 6 orang siswa:",
+    "visual": "⏰ Data Input: [7 jam, 8 jam, <strong>26 jam</strong>, 6 jam, <strong>\"tidak tahu\"</strong>, 8 jam].<br><strong>Tugas Regu:</strong> Temukan 2 data cacat/kotor yang harus dibuang atau dikoreksi!",
+    "answer": "<strong>26 jam</strong> (mustahil karena sehari hanya 24 jam) dan <strong>\"tidak tahu\"</strong> (berupa teks bukan angka/jam kuantitatif)."
+  },
+  {
+    "id": "kd-4",
+    "category": "🕵️ Kasus Detektif",
+    "points": 150,
+    "title": "Deteksi Asal Sumber Data BPS",
+    "desc": "Siswa mengunduh dokumen sensus penduduk Kabupaten Sumedang langsung dari website resmi Badan Pusat Statistik (BPS).",
+    "visual": "🏛️ Dokumen: Laporan Statistik Kependudukan Resmi dari website BPS.<br><strong>Tugas Detektif:</strong> Bagi siswa tersebut, apakah dokumen BPS ini berstatus sebagai Data Primer atau Data Sekunder? Jelaskan!",
+    "answer": "<strong>Data Sekunder!</strong> Karena siswa tidak mencacah langsung penduduk di lapangan, melainkan memanfaatkan data yang telah dihimpun dan diterbitkan oleh pihak BPS."
+  },
+  {
+    "id": "kd-5",
+    "category": "🕵️ Kasus Detektif",
+    "points": 150,
+    "title": "Misteri Nilai Ulangan Angka 0",
+    "desc": "Data nilai ujian 8 siswa: [80, 85, 90, 75, 80, <strong>0</strong>, 85, 95]. Diketahui siswa ke-6 izin sakit dan belum susulan.",
+    "visual": "🔍 Skenario: Angka 0 milik siswa sakit yang belum ujian.<br><strong>Tugas Detektif:</strong> Mengapa angka 0 tersebut harus ditandai khusus (missing data) dan tidak boleh langsung dihitung ke dalam rata-rata kelas?",
+    "answer": "Karena nilai 0 tersebut bukan nilai murni melainkan data kosong (absen). Jika dimasukkan, nilai rata-rata kelas akan turun drastis secara tidak adil dan tidak akurat!"
+  },
+  {
+    "id": "dr-1",
+    "category": "⚡ Duel Rebutan",
+    "points": 200,
+    "title": "Urutan 4 Tahap Pertama Analisis Data",
+    "desc": "Regu tercepat yang mengangkat tangan atau menekan bel berhak menjawab!",
+    "visual": "❓ <strong>Pertanyaan Rebutan:</strong> Sebutkan secara urut dan tepat 4 tahap pertama dalam proses analisis data!",
+    "answer": "<strong>1. Mengumpulkan Data -> 2. Membersihkan Data -> 3. Mengolah & Menganalisis Data -> 4. Memvisualisasikan Data.</strong>"
+  },
+  {
+    "id": "dr-2",
+    "category": "⚡ Duel Rebutan",
+    "points": 200,
+    "title": "Perbedaan Mendasar Data vs Informasi",
+    "desc": "Duel konsep dasar analisis data!",
+    "visual": "❓ <strong>Pertanyaan Rebutan:</strong> Apakah perbedaan utama antara DATA dan INFORMASI?",
+    "answer": "<strong>Data</strong> adalah fakta/angka mentah yang belum diolah dan belum memiliki makna. Sedangkan <strong>Informasi</strong> adalah data yang sudah diolah dan bermakna sehingga berguna untuk mengambil keputusan!"
+  },
+  {
+    "id": "dr-3",
+    "category": "⚡ Duel Rebutan",
+    "points": 200,
+    "title": "Tiga Tahap Terakhir Analisis Data",
+    "desc": "Tunjukkan ingatan tajam regu kalian!",
+    "visual": "❓ <strong>Pertanyaan Rebutan:</strong> Sebutkan 3 tahap terakhir dari 6 tahapan analisis data secara berurutan!",
+    "answer": "<strong>4. Memvisualisasikan Data -> 5. Menafsirkan Data -> 6. Menyajikan Data.</strong>"
+  },
+  {
+    "id": "dr-4",
+    "category": "⚡ Duel Rebutan",
+    "points": 200,
+    "title": "Ciri Khas Histogram vs Diagram Batang",
+    "desc": "Duel pemahaman visual data!",
+    "visual": "❓ <strong>Pertanyaan Rebutan:</strong> Mengapa batang pada diagram batang memiliki celah/spasi, sedangkan batang pada histogram menempel tanpa celah?",
+    "answer": "Karena Diagram Batang mewakili <strong>kategori data diskrit/terpisah</strong>, sedangkan Histogram mewakili <strong>rentang interval data numerik yang kontinu/bersambung</strong>!"
+  },
+  {
+    "id": "dr-5",
+    "category": "⚡ Duel Rebutan",
+    "points": 200,
+    "title": "Sebutkan Contoh Nyata Data Primer & Sekunder",
+    "desc": "Duel contoh nyata di madrasah/sekolah!",
+    "visual": "❓ <strong>Pertanyaan Rebutan:</strong> Berikan masing-masing 1 contoh aktivitas pengumpulan Data Primer dan Data Sekunder di sekolah!",
+    "answer": "<strong>Primer:</strong> Melakukan wawancara langsung dengan penjual kantin atau menyebar kuesioner. <strong>Sekunder:</strong> Meminjam buku rekam medis UKS atau meminta data absensi dari wali kelas."
+  },
+  {
+    "id": "ar-1",
+    "category": "🎯 Analisis Rasio",
+    "points": 100,
+    "title": "Membaca Proporsi Diagram Lingkaran",
+    "desc": "Hasil survei sarana transportasi 100 orang siswa:",
+    "visual": "🥧 Data Lingkaran: Sepeda Motor (50%), Sepeda Kayuh (25%), Jalan Kaki (15%), Angkutan Umum (?)<br><strong>Pertanyaan:</strong> Berapa persen siswa pengguna Angkutan Umum dan berapa banyak siswanya?",
+    "answer": "<strong>10% dan 10 siswa!</strong> (100% - 50% - 25% - 15% = 10%. Dari 100 siswa, 10% x 100 = 10 siswa)."
+  },
+  {
+    "id": "ar-2",
+    "category": "🎯 Analisis Rasio",
+    "points": 100,
+    "title": "Menghitung Derajat Juring Lingkaran",
+    "desc": "Data hobi 120 siswa disajikan dalam diagram lingkaran. Hobi membaca komik menempati 25% juring lingkaran.",
+    "visual": "📐 Porsi Membaca: 25% dari total satu lingkaran penuh (360°).<br><strong>Pertanyaan:</strong> Berapa derajat sudut juring untuk hobi membaca dan berapa siswa yang menyukainya?",
+    "answer": "<strong>Sudut 90° dan 30 siswa!</strong> (25% x 360° = 90°. Jumlah siswa = 25% x 120 = 30 siswa)."
+  },
+  {
+    "id": "ar-3",
+    "category": "🎯 Analisis Rasio",
+    "points": 100,
+    "title": "Rasio Pengunjung Perpustakaan",
+    "desc": "Data pengunjung perpus: Hari Senin = 40 siswa, Hari Selasa = 60 siswa, Hari Rabu = 80 siswa.",
+    "visual": "📚 Kunjungan: Senin (40), Selasa (60), Rabu (80).<br><strong>Pertanyaan:</strong> Berapakah rasio perbandingan pengunjung hari Senin terhadap hari Rabu dalam bentuk paling sederhana?",
+    "answer": "<strong>1 : 2</strong> (karena 40 : 80 disederhanakan dengan membagi keduanya dengan 40 menjadi 1 : 2)."
+  },
+  {
+    "id": "ar-4",
+    "category": "🎯 Analisis Rasio",
+    "points": 100,
+    "title": "Persentase Lonjakan Peminjaman Buku",
+    "desc": "Bulan Januari peminjam buku ada 50 siswa. Pada bulan Februari melonjak menjadi 75 siswa.",
+    "visual": "📈 Peminjam: Januari (50) -> Februari (75).<br><strong>Pertanyaan:</strong> Berapa persen kenaikan jumlah peminjam buku dari Januari ke Februari?",
+    "answer": "<strong>50% Kenaikan!</strong> (Selisih kenaikan = 75 - 50 = 25. Persentase = 25 / 50 x 100% = 50%)."
+  },
+  {
+    "id": "ar-5",
+    "category": "🎯 Analisis Rasio",
+    "points": 100,
+    "title": "Rasio Gender Peserta Ekskul Robotik",
+    "desc": "Dari 40 anggota ekskul robotik, terdapat 30 siswa laki-laki dan 10 siswi perempuan.",
+    "visual": "🤖 Anggota: 30 Laki-laki & 10 Perempuan.<br><strong>Pertanyaan:</strong> Berapa persentase siswi perempuan dan berapa perbandingan rasio Laki-laki : Perempuan?",
+    "answer": "<strong>Perempuan 25% dan Rasio 3 : 1!</strong> (Perempuan: 10/40 x 100% = 25%. Rasio L:P = 30:10 = 3:1)."
+  },
+  {
+    "id": "sb-1",
+    "category": "💎 Super Bonus",
+    "points": 300,
+    "title": "Perbedaan Diagram Batang vs Histogram",
+    "desc": "Tantangan konsep tingkat lanjut untuk 300 poin penuh!",
+    "visual": "❓ <strong>Pertanyaan Super:</strong> Jelaskan 2 perbedaan mendasar (dari segi bentuk visual dan jenis data) antara Diagram Batang dengan Histogram!",
+    "answer": "1. <strong>Tampilan:</strong> Diagram Batang memiliki celah/spasi antarbatang, sedangkan Histogram batangnya berdempetan tanpa celah.<br>2. <strong>Jenis Data:</strong> Diagram Batang untuk data kategori terpisah (diskrit/kualitatif), sedangkan Histogram untuk rentang interval data angka kontinu."
+  },
+  {
+    "id": "sb-2",
+    "category": "💎 Super Bonus",
+    "points": 300,
+    "title": "Membongkar Manipulasi Grafik (Misleading Chart)",
+    "desc": "Tantangan berpikir kritis tingkat tinggi!",
+    "visual": "📉 Grafik Penjualan Toko A terlihat 5x lebih tinggi dari Toko B padahal nilainya 102 vs 100, karena sumbu Y dimulai dari angka 99 (tidak dari 0).<br><strong>Pertanyaan:</strong> Mengapa grafik yang tidak memulai sumbu Y dari angka 0 (truncated baseline) dianggap manipulatif/menyesatkan?",
+    "answer": "Karena memperbesar perbedaan kecil secara visual sehingga tampak sangat drastis dan mengecoh pembaca grafik yang tidak cermat melihat angka sumbu!"
+  },
+  {
+    "id": "sb-3",
+    "category": "💎 Super Bonus",
+    "points": 300,
+    "title": "Klasifikasi Ganda Skenario Data",
+    "desc": "Klasifikasikan skenario data berikut ke dalam 2 jenis sekaligus!",
+    "visual": "📋 Skenario: \"Seorang siswa mewawancarai langsung 20 orang guru untuk mencatat jumlah jam mengajar mereka per minggu.\"<br><strong>Pertanyaan:</strong> Apakah data tersebut: (1) Kuantitatif atau Kualitatif? DAN (2) Primer atau Sekunder?",
+    "answer": "1. <strong>Data Kuantitatif</strong> (karena jumlah jam mengajar berupa angka yang dihitung).<br>2. <strong>Data Primer</strong> (karena siswa melakukan wawancara langsung sendiri ke narasumber)."
+  },
+  {
+    "id": "sb-4",
+    "category": "💎 Super Bonus",
+    "points": 300,
+    "title": "Penerapan Siklus Analisis Data di Kantin",
+    "desc": "Studi kasus riil dunia usaha sekolah!",
+    "visual": "🍧 Kasus: Penjualan es jeruk di kantin habis dalam 15 menit saat jam istirahat terik matahari, sementara saat hujan tersisa banyak.<br><strong>Pertanyaan:</strong> Bagaimana tahapan Kumpulkan -> Olah -> Keputusan dapat memecahkan masalah ini?",
+    "answer": "Kumpulkan data cuaca harian & sisa cup -> Olah korelasi cuaca vs penjualan -> Buat keputusan: Jika cuaca terik siapkan 100 cup, jika mendung/hujan kurangi menjadi 30 cup agar tidak merugi!"
+  },
+  {
+    "id": "sb-5",
+    "category": "💎 Super Bonus",
+    "points": 300,
+    "title": "Tafsir Scatter Plot Hubungan Terbalik",
+    "desc": "Membaca korelasi dua variabel!",
+    "visual": "📈 Scatter Plot: Sumbu X = Durasi Bermain Game HP (jam), Sumbu Y = Nilai Ulangan. Pola titik-titik bergerak menurun tajam dari kiri atas ke kanan bawah.<br><strong>Pertanyaan:</strong> Pola korelasi apa yang terjadi dan apa makna kesimpulannya?",
+    "answer": "<strong>Korelasi Negatif (Berbanding Terbalik)!</strong> Maknanya: semakin banyak waktu yang dihabiskan bermain game HP, ada kecenderungan nilai ulangan siswa semakin menurun."
+  },
+  {
+    "id": "te-1",
+    "category": "💣 Tantangan Ekstra",
+    "points": 250,
+    "title": "Evaluasi Gender Ekskul Paling Seimbang",
+    "desc": "Cermati komposisi dua regu kegiatan sekolah:",
+    "visual": "⚽ Ekskul Futsal: 24 Laki-laki & 6 Perempuan (Total 30).<br>♟️ Ekskul Catur: 15 Laki-laki & 15 Perempuan (Total 30).<br><strong>Pertanyaan:</strong> Ekskul manakah yang komposisi gendernya paling seimbang (heterogen) dan buktikan dengan persentase!",
+    "answer": "<strong>Ekskul Catur!</strong> Karena rasionya 1:1 yaitu 50% Laki-laki dan 50% Perempuan, sedangkan Futsal didominasi 80% Laki-laki berbanding 20% Perempuan."
+  },
+  {
+    "id": "te-2",
+    "category": "💣 Tantangan Ekstra",
+    "points": 250,
+    "title": "Mendeteksi Data Pencilan (Outlier)",
+    "desc": "Kecepatan internet laboratorium komputer selama 5 hari (dalam Mbps):",
+    "visual": "📶 Data: [20 Mbps, 25 Mbps, 15 Mbps, 30 Mbps, <strong>250 Mbps</strong>].<br><strong>Pertanyaan:</strong> Manakah data yang tergolong Pencilan (Outlier) dan berapa nilai median dari data tersebut?",
+    "answer": "<strong>Outlier = 250 Mbps</strong> (jauh melonjak di luar batas normal hari lainnya). <strong>Median = 25 Mbps</strong> (setelah diurutkan: 15, 20, 25, 30, 250)."
+  },
+  {
+    "id": "te-3",
+    "category": "💣 Tantangan Ekstra",
+    "points": 250,
+    "title": "Menentukan Visualisasi Terbaik untuk 3 Kasus",
+    "desc": "Tentukan grafik paling tepat untuk 3 kebutuhan berikut!",
+    "visual": "1. Pembagian persentase anggaran dana kas kelas.<br>2. Perbandingan jumlah buku per mata pelajaran.<br>3. Pertumbuhan tinggi tanaman jagung selama 14 hari berturut-turut.<br><strong>Tugas:</strong> Pasangkan masing-masing dengan grafik terbaiknya!",
+    "answer": "1. <strong>Diagram Lingkaran (Pie Chart)</strong><br>2. <strong>Diagram Batang (Bar Chart)</strong><br>3. <strong>Diagram Garis (Line Chart)</strong>"
+  },
+  {
+    "id": "te-4",
+    "category": "💣 Tantangan Ekstra",
+    "points": 250,
+    "title": "Evaluasi Survei Kepuasan Kantin",
+    "desc": "Dari 200 siswa yang disurvei: Sangat Puas = 45%, Puas = 35%, Cukup = 15%, Tidak Puas = 5%.",
+    "visual": "📊 Kepuasan: Sangat Puas (45%) & Puas (35%).<br><strong>Pertanyaan:</strong> Berapa jumlah total siswa yang merasa minimal puas (kategori Sangat Puas + Puas)?",
+    "answer": "<strong>160 Siswa!</strong> (Persentase gabungan = 45% + 35% = 80%. Jumlah siswa = 80% x 200 = 160 siswa)."
+  },
+  {
+    "id": "te-5",
+    "category": "💣 Tantangan Ekstra",
+    "points": 250,
+    "title": "Validasi Kualitas Data Sebelum Dianalisis",
+    "desc": "Kritis dalam memilah data!",
+    "visual": "❓ <strong>Pertanyaan Kritis:</strong> Mengapa data mentah yang diunduh dari internet tidak boleh langsung disajikan dalam laporan tanpa melalui tahap verifikasi dan pembersihan data?",
+    "answer": "Karena data dari internet rentan memuat informasi palsu (hoaks), kesalahan ketik/format, duplikasi, atau data yang sudah usang sehingga dapat menghasilkan kesimpulan yang salah dan merugikan!"
+  },
+  {
+    "id": "rp-1",
+    "category": "🔄 Rebut Poin",
+    "points": 150,
+    "title": "Interpretasi Arah Scatter Plot Positif",
+    "desc": "Perhatikan grafik koordinat antara \"Waktu Belajar\" dan \"Nilai Ujian\":",
+    "visual": "📈 Pola: Semakin ke kanan (jam belajar bertambah), titik-titik semakin naik ke atas.<br><strong>Pertanyaan:</strong> Pola korelasi apa yang terbentuk pada scatter plot tersebut?",
+    "answer": "<strong>Korelasi Positif (Hubungan Searah)!</strong> Artinya penambahan waktu belajar berbanding lurus dengan kenaikan nilai ujian siswa."
+  },
+  {
+    "id": "rp-2",
+    "category": "🔄 Rebut Poin",
+    "points": 150,
+    "title": "Scatter Plot Korelasi Nol (Tidak Berkorelasi)",
+    "desc": "Peneliti meneliti hubungan antara \"Ukuran Sepatu Siswa\" dengan \"Nilai Matematika\".",
+    "visual": "🔵 Pola: Titik-titik tersebar merata dan acak membentuk awan bundar tanpa arah.<br><strong>Pertanyaan:</strong> Apa kesimpulan hubungan antar kedua variabel tersebut?",
+    "answer": "<strong>Korelasi Nol (Tidak Ada Hubungan)!</strong> Ukuran sepatu seseorang tidak memengaruhi kecerdasan atau kemampuan matematikanya."
+  },
+  {
+    "id": "rp-3",
+    "category": "🔄 Rebut Poin",
+    "points": 150,
+    "title": "Komparasi Data Dua Kelas Berbeda",
+    "desc": "Kelas 8A memiliki 16 siswa laki-laki & 14 siswi perempuan (Total 30). Kelas 8B memiliki 12 siswa laki-laki & 18 siswi perempuan (Total 30).",
+    "visual": "👥 Kelas 8A: 16L & 14P | Kelas 8B: 12L & 18P.<br><strong>Pertanyaan:</strong> Kelas manakah yang memiliki siswi perempuan terbanyak dan berapa selisihnya?",
+    "answer": "<strong>Kelas 8B!</strong> Selisihnya adalah 4 orang (Kelas 8B memiliki 18 siswi perempuan, sedangkan Kelas 8A memiliki 14 siswi perempuan)."
+  },
+  {
+    "id": "rp-4",
+    "category": "🔄 Rebut Poin",
+    "points": 150,
+    "title": "Aplikasi Ramalan Cuaca di Smartphone",
+    "desc": "Seorang siswa membaca informasi prakiraan cuaca di Sumedang melalui aplikasi BMKG di ponselnya.",
+    "visual": "📱 Data: Peringatan hujan lebat disertai petir dari aplikasi BMKG.<br><strong>Pertanyaan:</strong> Bagi siswa tersebut, apakah informasi ramalan cuaca itu merupakan data primer atau data sekunder? Berikan alasan!",
+    "answer": "<strong>Data Sekunder!</strong> Karena siswa tidak mengukur kecepatan angin dan tekanan udara sendiri di lapangan, melainkan memanfaatkan data yang disediakan oleh pihak BMKG."
+  },
+  {
+    "id": "rp-5",
+    "category": "🔄 Rebut Poin",
+    "points": 150,
+    "title": "Membaca Modus Data Nilai Ulangan",
+    "desc": "Tabel nilai ulangan harian siswa: Nilai 70 (4 orang), Nilai 80 (15 orang), Nilai 90 (8 orang), Nilai 100 (3 orang).",
+    "visual": "📋 Frekuensi: 70 (4), 80 (15), 90 (8), 100 (3).<br><strong>Pertanyaan:</strong> Berapakah nilai Modus (nilai yang paling sering muncul) dan berapa persen siswa yang mendapat nilai 80 ke atas?",
+    "answer": "<strong>Modus = 80!</strong> Siswa nilai 80 ke atas ada 26 orang (15 + 8 + 3) dari total 30 siswa, yaitu sekitar <strong>86,7%</strong>."
+  },
+  {
+    "id": "kh-1",
+    "category": "🚀 Kilat HOTS",
+    "points": 200,
+    "title": "Tantangan Pengambilan Keputusan Nyata",
+    "desc": "Cermati nilai rata-rata mata pelajaran satu kelas:",
+    "visual": "📊 Nilai Rata-rata: Matematika (68), IPA (72), Bahasa Indonesia (85), Informatika (88). KKM yang ditetapkan adalah 75.<br><strong>Pertanyaan:</strong> Dua mata pelajaran manakah yang harus diprioritaskan guru untuk bimbingan belajar tambahan?",
+    "answer": "<strong>Matematika (68) dan IPA (72)!</strong> Karena rata-rata nilainya masih di bawah standar ketuntasan minimal (KKM 75)."
+  },
+  {
+    "id": "kh-2",
+    "category": "🚀 Kilat HOTS",
+    "points": 200,
+    "title": "Evaluasi Solutif Kuota Ekskul Membludak",
+    "desc": "Pendaftar ekskul Robotika ada 60 siswa (kapasitas lab hanya 20 siswa), sedangkan ekskul Paduan Suara hanya 5 pendaftar (kapasitas 30 siswa).",
+    "visual": "🤖 Robotika: 60 pendaftar (kapasitas 20) | 🎵 Paduan Suara: 5 pendaftar (kapasitas 30).<br><strong>Tantangan Analitis:</strong> Sebagai wakil kepala sekolah, keputusan bijak apa yang harus diambil berbasis data tersebut?",
+    "answer": "Membuka gelombang/shift kedua untuk ekskul Robotika (misal jadwal hari lain), serta mengadakan demonstrasi penampilan menarik untuk ekskul Paduan Suara agar kuotanya terisi lebih berimbang!"
+  },
+  {
+    "id": "kh-3",
+    "category": "🚀 Kilat HOTS",
+    "points": 200,
+    "title": "Efisiensi Anggaran Berbasis Data Survei",
+    "desc": "Survei media informasi pilihan siswa: Instagram OSIS (65%), WhatsApp Kelas (25%), Mading Kertas (10%). Saat ini anggaran OSIS 70% dipakai mencetak poster mading.",
+    "visual": "📱 Minat Siswa: Instagram (65%) & WA (25%). Anggaran poster kertas (70%).<br><strong>Pertanyaan Keputusan:</strong> Rekomendasi apa yang paling tepat untuk efisiensi anggaran pengurus OSIS?",
+    "answer": "Mengalihkan sebagian besar anggaran poster mading kertas ke pembuatan konten digital di media sosial OSIS yang terbukti diakses oleh 90% siswa, sehingga jauh lebih hemat dan berdampak luas!"
+  },
+  {
+    "id": "kh-4",
+    "category": "🚀 Kilat HOTS",
+    "points": 200,
+    "title": "Menilai Kredibilitas Sampel Survei Online",
+    "desc": "Sebuah survei pemilihan menu makanan kantin baru hanya diisi oleh 10 orang yang semuanya adalah anggota satu geng kelas yang sama dari total 500 siswa madrasah.",
+    "visual": "👥 Responden: 10 orang teman dekat dari 500 total siswa madrasah.<br><strong>Pertanyaan Evaluasi:</strong> Apakah data survei tersebut valid untuk menentukan menu seluruh siswa? Jelaskan secara analitis!",
+    "answer": "<strong>Tidak Valid!</strong> Karena jumlah sampel terlalu sedikit (hanya 2%) dan terjadi bias seleksi (hanya satu kelompok berteman), sehingga tidak mewakili (representatif) selera seluruh siswa sekolah."
+  },
+  {
+    "id": "kh-5",
+    "category": "🚀 Kilat HOTS",
+    "points": 200,
+    "title": "Analisis Data Penjualan Koperasi Sekolah",
+    "desc": "Grafik garis penjualan alat tulis koperasi sekolah menunjukkan penurunan drastis 90% setiap bulan Juni dan Juli.",
+    "visual": "📉 Tren: Penjualan anjlok 90% pada bulan Juni-Juli setiap tahunnya.<br><strong>Pertanyaan:</strong> Apa penyebab pola tren tahunan tersebut dan tindakan persiapan apa yang harus dilakukan koperasi pada akhir Juli?",
+    "answer": "Penyebabnya adalah masa libur kenaikan kelas (tidak ada kegiatan belajar di sekolah). Tindakan koperasi: menambah stok buku tulis dan perlengkapan sekolah pada akhir Juli untuk menyambut tahun ajaran baru!"
   }
 ];
 
@@ -1840,21 +2136,41 @@ function spinBattleWheel() {
 }
 
 function onWheelResultSelected(sector) {
-  // Ambil tantangan sesuai sektor atau acak
-  let matching = BATTLE_CHALLENGES.filter(c => c.category === sector.label);
-  let challenge = null;
-
-  if (matching.length > 0) {
-    challenge = matching[Math.floor(Math.random() * matching.length)];
-  } else {
-    challenge = BATTLE_CHALLENGES[Math.floor(Math.random() * BATTLE_CHALLENGES.length)];
+  if (!APP_STATE.battle.usedChallengeIds) {
+    APP_STATE.battle.usedChallengeIds = [];
   }
 
-  // Gunakan poin dari roda
-  challenge = Object.assign({}, challenge, { points: sector.pts, category: sector.label });
+  let matching = BATTLE_CHALLENGES.filter(c => c.category === sector.label);
+  if (matching.length === 0) {
+    matching = BATTLE_CHALLENGES;
+  }
+
+  // Filter soal yang belum pernah keluar
+  let unused = matching.filter(c => !APP_STATE.battle.usedChallengeIds.includes(c.id));
+  if (unused.length === 0) {
+    // Reset pool untuk kategori ini jika semua soal di kategori ini sudah keluar
+    APP_STATE.battle.usedChallengeIds = APP_STATE.battle.usedChallengeIds.filter(id => !matching.some(m => m.id === id));
+    unused = matching;
+  }
+
+  const selectedTemplate = unused[Math.floor(Math.random() * unused.length)];
+  APP_STATE.battle.usedChallengeIds.push(selectedTemplate.id);
+
+  // Gunakan poin dari sektor roda
+  const challenge = Object.assign({}, selectedTemplate, { points: sector.pts, category: sector.label });
   APP_STATE.battle.currentChallenge = challenge;
 
   displayChallengeCard(challenge);
+}
+
+function nextChallengeInCategory() {
+  const cur = APP_STATE.battle.currentChallenge;
+  const cat = cur ? cur.category : '📊 Tebak Cepat';
+  const pts = cur ? cur.points : 100;
+
+  const sector = { label: cat, pts: pts };
+  onWheelResultSelected(sector);
+  playTone(587.33, 'triangle', 0.15);
 }
 
 function displayChallengeCard(ch) {

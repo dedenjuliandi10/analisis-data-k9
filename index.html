@@ -1125,7 +1125,10 @@
             <!-- Sisi Kanan: Panggung Tantangan & Soal -->
             <div class="challenge-stage-box">
               <div class="challenge-header-bar">
-                <span class="challenge-category-pill" id="challengeCategoryPill">Kategori: Belum Diputar</span>
+                <div class="challenge-header-left">
+                  <span class="challenge-category-pill" id="challengeCategoryPill">Kategori: Belum Diputar</span>
+                  <span class="challenge-bank-count-pill" title="Tersedia 40 Bank Soal Seru untuk Kelas!">📚 40 Bank Soal Siap Main</span>
+                </div>
                 <span class="challenge-points-pill" id="challengePointsPill">+0 Poin</span>
               </div>
 
@@ -1134,7 +1137,7 @@
                 <div class="challenge-placeholder" id="challengePlaceholder">
                   <div class="placeholder-icon">🎡</div>
                   <h4>Siapakah Regu Tercepat & Terhebat di Kelas?</h4>
-                  <p>Tekan tombol <strong>"PUTAR RODA TANTANGAN"</strong> di samping untuk mengundi soal dan poin rebutan untuk kelas!</p>
+                  <p>Tekan tombol <strong>"PUTAR RODA TANTANGAN"</strong> di samping untuk mengundi dari <strong>40 Bank Soal Tantangan</strong> dan rebut poin untuk kelas!</p>
                 </div>
 
                 <!-- Tampilan Tantangan Aktif -->
@@ -1151,6 +1154,7 @@
                     <div class="c-timer-btns">
                       <button class="btn btn-sm btn-outline" id="btnStartChallengeTimer" onclick="startChallengeCountdown(15)">▶ Mulai Hitung Mundur</button>
                       <button class="btn btn-sm btn-outline" onclick="stopChallengeCountdown()">⏹ Stop</button>
+                      <button class="btn btn-sm btn-outline" onclick="nextChallengeInCategory()" title="Ganti ke soal lain dalam kategori yang sama tanpa memutar roda ulang">🎲 Ganti Soal Lain</button>
                     </div>
                   </div>
 
