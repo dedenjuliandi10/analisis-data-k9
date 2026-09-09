@@ -2467,6 +2467,14 @@ button {
   margin-bottom: 0.2rem;
 }
 
+.footer-copyright {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary-navy);
+  margin-top: 0.4rem;
+  letter-spacing: 0.2px;
+}
+
 .btn-clear-cache {
   font-size: 0.8rem;
   font-weight: 700;
