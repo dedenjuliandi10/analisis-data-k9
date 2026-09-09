@@ -841,7 +841,166 @@ button {
   color: #064e3b;
 }
 
-/* Sub Materi B: 4 Tujuan Analisis */
+/* ==========================================================================
+   SUB MATERI B: JENIS-JENIS DATA (BENTUK & SUMBER)
+   ========================================================================== */
+.data-category-group {
+  margin-bottom: 2rem;
+}
+
+.data-category-group:last-child {
+  margin-bottom: 0.5rem;
+}
+
+.category-group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.cat-badge-pill {
+  background: var(--color-primary-navy);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.category-group-header h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-primary-navy);
+  margin: 0;
+}
+
+.data-types-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.type-card {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.type-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.type-kuantitatif {
+  border-top: 5px solid #2563eb;
+}
+
+.type-kualitatif {
+  border-top: 5px solid #7c3aed;
+}
+
+.type-primer {
+  border-top: 5px solid #059669;
+}
+
+.type-sekunder {
+  border-top: 5px solid #ea580c;
+}
+
+.type-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.type-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.type-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+}
+
+.badge-kuantitatif { background: #dbeafe; color: #1e40af; }
+.badge-kualitatif { background: #ede9fe; color: #6d28d9; }
+.badge-primer { background: #d1fae5; color: #065f46; }
+.badge-sekunder { background: #ffedd5; color: #c2410c; }
+
+.type-card-head h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  margin: 0;
+}
+
+.type-desc {
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: #334155;
+  margin-bottom: 1.2rem;
+}
+
+.type-examples-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  margin-top: auto;
+}
+
+.ex-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--color-primary-navy);
+  margin-bottom: 0.6rem;
+}
+
+.ex-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.ex-pill {
+  display: inline-block;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  margin-left: 0.2rem;
+}
+
+.pill-alt {
+  background: #f5f3ff;
+  border-color: #ddd6fe;
+  color: #6d28d9;
+}
+
+/* Sub Materi C: 4 Tujuan Analisis */
 .section-guide-text {
   color: var(--color-text-muted);
   font-size: 1rem;
@@ -2675,6 +2834,10 @@ button {
   .detective-banner-box {
     flex-direction: column;
     text-align: center;
+  }
+
+  .data-types-grid {
+    grid-template-columns: 1fr;
   }
 
   .footer-inner {
