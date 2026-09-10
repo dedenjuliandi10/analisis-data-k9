@@ -321,124 +321,114 @@ const QUIZ_1_QUESTIONS = [
 
 const QUIZ_2_QUESTIONS = [
   {
-    "q": "Langkah awal yang paling tepat sebelum membuat grafik (chart) pada lembar kerja Microsoft Excel adalah...",
-    "difficulty": "MOTS",
+    "q": "Pada Fase 1 LKPD Proyek Visualisasi Data, kelompokmu diminta menjawab pertanyaan mendasar: 'Informasi apa tentang kehidupan di madrasah kita yang belum pernah kalian lihat dalam bentuk grafik, padahal sangat penting diketahui banyak orang?'. Mengapa penting memilih data nyata dari lingkungan madrasah kita sendiri?",
     "options": [
-      "Langsung menekan tombol Print di menu File",
-      "Memilih (menyorot/mem-blok) rentang sel data tabel beserta judul kolomnya",
-      "Menghapus seluruh rumus formula yang ada di tabel",
-      "Menutup workbook dan membukanya kembali"
+      "Agar tugas cepat selesai tanpa perlu melakukan survei atau mencatat fakta",
+      "Agar visualisasi data yang dihasilkan memiliki makna nyata dan bermanfaat untuk membantu sesama warga madrasah",
+      "Karena data madrasah selalu berbentuk grafik lingkaran yang sudah jadi",
+      "Agar tidak perlu menggunakan buku catatan atau aplikasi spreadsheet sama sekali"
     ],
     "answer": 1,
-    "explanation": "Sebelum menyisipkan grafik di Excel, kita wajib menyorot (select) rentang sel data beserta judul kolomnya agar Excel dapat membaca seri data dan label kategori dengan tepat."
+    "explanation": "Memilih data nyata dari madrasah (kehadiran, nilai, ekskul, transportasi) menjadikan visualisasi data bermakna kontekstual dan bermanfaat bagi sesama warga madrasah sesuai nilai Panca Cinta: Cinta Diri dan Sesama Manusia."
   },
   {
-    "q": "Pada antarmuka Microsoft Excel, menu Tab Ribbon yang memuat kumpulan ikon untuk memilih dan menyisipkan jenis grafik adalah...",
-    "difficulty": "MOTS",
+    "q": "Kelompok Ahmad memilih topik 'Data jenis transportasi yang digunakan siswa kelas IX ke madrasah' (jalan kaki, sepeda, motor/antar, angkutan umum). Jenis visualisasi data manakah yang paling tepat dipilih Ahmad pada Fase 2 perencanaan proyek untuk membandingkan jumlah siswa antar moda transportasi tersebut?",
     "options": [
-      "Home",
-      "Page Layout",
-      "Insert",
-      "Review"
-    ],
-    "answer": 2,
-    "explanation": "Di Microsoft Excel, seluruh jenis grafik (Column, Line, Pie, Bar, Scatter) berada di Tab Ribbon 'Insert' pada grup 'Charts'."
-  },
-  {
-    "q": "Kamu memiliki data persentase anggaran kegiatan OSIS dari total 100%. Tipe chart Excel manakah yang paling ideal untuk menyajikan data proporsi tersebut?",
-    "difficulty": "MOTS",
-    "options": [
-      "Line Chart",
-      "Pie Chart (Diagram Lingkaran)",
-      "Scatter Plot",
-      "Radar Chart"
+      "Diagram Garis (Line Chart), karena transportasi siswa berubah terus setiap detik",
+      "Grafik Batang (Bar/Column Chart), karena sangat efektif membandingkan jumlah data diskret antar kategori yang berbeda",
+      "Scatter Plot, karena membutuhkan titik koordinat lintang dan bujur satelit GPS",
+      "Radar Chart, karena transportasi harus memiliki sudut putaran kompas"
     ],
     "answer": 1,
-    "explanation": "Pie Chart di Excel dirancang khusus untuk memvisualisasikan bagian atau proporsi persentase dari keseluruhan total 100%."
+    "explanation": "Grafik Batang (Bar/Column Chart) adalah tipe visualisasi paling tepat untuk membandingkan data kuantitas atau frekuensi pada kategori-kategori terpisah (diskret) seperti berbagai jenis kendaraan/moda transportasi."
   },
   {
-    "q": "Di Microsoft Excel, elemen grafik yang berfungsi menampilkan nilai angka pasti (misal: 85, 90, 75) tepat di atas atau di dalam batang grafik disebut...",
-    "difficulty": "MOTS",
+    "q": "Jika kelompok Siti ingin menyajikan 'Persentase minat pilihan ekstrakurikuler siswa kelas IX dari total keseluruhan 100% siswa', jenis grafik yang paling ideal dicantumkan dalam lembar perencanaan LKPD adalah...",
     "options": [
-      "Chart Title",
-      "Gridlines",
-      "Data Labels",
-      "Axis Titles"
+      "Diagram Garis (Line Chart)",
+      "Grafik Lingkaran (Pie Chart)",
+      "Peta Topografi",
+      "Grafik Area bertumpuk 3 Dimensi"
+    ],
+    "answer": 1,
+    "explanation": "Sesuai panduan LKPD Fase 2, Grafik Lingkaran (Pie Chart) dirancang khusus untuk memvisualisasikan proporsi atau persentase bagian dari keseluruhan total 100%."
+  },
+  {
+    "q": "Pada Fase 3 LKPD, kelompok menyusun jadwal kerja selama 80 menit (2 JP). Urutan runtut pelaksanaan 4 kegiatan proyek yang benar agar visualisasi data selesai tepat waktu adalah...",
+    "options": [
+      "Presentasi & evaluasi ➡ Pembuatan visualisasi ➡ Pembersihan data ➡ Perencanaan & pengumpulan data",
+      "Pembuatan visualisasi ➡ Perencanaan ➡ Presentasi ➡ Pembersihan & pengolahan data",
+      "Perencanaan & pengumpulan data ➡ Pembersihan & pengolahan data ➡ Pembuatan visualisasi ➡ Presentasi & evaluasi",
+      "Pengolahan data ➡ Presentasi ➡ Pengumpulan data ➡ Pembersihan data"
     ],
     "answer": 2,
-    "explanation": "Data Labels (Label Data) berfungsi menampilkan angka nilai aktual langsung pada elemen batang atau titik grafik di Excel."
+    "explanation": "Alur sistematis proyek PjBL pada tabel jadwal Fase 3 adalah: (1) Perencanaan & pengumpulan data, (2) Pembersihan & pengolahan data, (3) Pembuatan visualisasi, dan (4) Presentasi & evaluasi."
   },
   {
-    "q": "Pada diagram batang ganda di Excel yang membandingkan data siswa Laki-laki dan Perempuan, fungsi dari elemen 'Legend' (Legenda) adalah...",
-    "difficulty": "MOTS",
+    "q": "Pada Fase 4 Langkah 2 (Pembersihan Data), kelompok menemukan ada satu siswa yang mengisi formulir survei kehadiran sebanyak 2 kali (duplikat) dan kolom jarak rumah terisi teks huruf 'jauh' bukannya angka kilometer. Tindakan pembersihan data yang paling tepat adalah...",
     "options": [
-      "Menampilkan kotak keterangan warna yang mewakili data Laki-laki dan Perempuan",
-      "Mengubah warna tema seluruh lembar kerja Excel",
-      "Mengurutkan abjad nama siswa dari A sampai Z",
-      "Menghapus seri data yang bernilai nol"
+      "Membiarkan saja kesalahan tersebut agar grafiknya terlihat lebih ramai dan panjang",
+      "Menghapus entri duplikat serta mengonfirmasi dan mengubah teks menjadi format angka yang valid sebelum diolah",
+      "Menghapus seluruh file spreadsheet dan membatalkan proyek kelompok",
+      "Langsung menggambar grafik tanpa memedulikan kebenaran data"
+    ],
+    "answer": 1,
+    "explanation": "Langkah pembersihan data (data cleaning) bertujuan membuang duplikasi dan memperbaiki anomali data (teks non-numerik) agar pengolahan dan grafik yang dihasilkan benar-benar akurat serta valid."
+  },
+  {
+    "q": "Dalam pengolahan data (Fase 4 Langkah 3) survei ekstrakurikuler kelas IX diperoleh data: Pramuka = 24 siswa, PMR = 12 siswa, Futsal = 30 siswa, dan Robotik = 14 siswa. Berdasarkan data nyata tersebut, berapakah nilai jumlah tertinggi dan total data siswa?",
+    "options": [
+      "Nilai tertinggi = PMR (12 siswa), Total data = 50 siswa",
+      "Nilai tertinggi = Futsal (30 siswa), Total data = 80 siswa",
+      "Nilai tertinggi = Pramuka (24 siswa), Total data = 70 siswa",
+      "Nilai tertinggi = Robotik (14 siswa), Total data = 100 siswa"
+    ],
+    "answer": 1,
+    "explanation": "Total data seluruh siswa = 24 + 12 + 30 + 14 = 80 siswa. Nilai/jumlah tertinggi terdapat pada ekstrakurikuler Futsal dengan 30 siswa."
+  },
+  {
+    "q": "Berdasarkan rubrik penilaian guru pada LKPD Aspek 3 (Kualitas Visualisasi), sebuah karya grafik yang baik dan informatif wajib memiliki kelengkapan unsur berupa...",
+    "options": [
+      "Judul grafik yang jelas, label kategori/sumbu yang terbaca, skala angka akurat, dan kerapian tampilan",
+      "Warna grafik yang menyilaukan mata dan gambar hiasan kartun yang mendominasi grafik",
+      "Tulisan teks yang sangat kecil agar memuat ratusan kata dalam satu bidang gambar",
+      "Menghilangkan angka dan label agar audiens menebak-nebak sendiri maknanya"
     ],
     "answer": 0,
-    "explanation": "Legend (Legenda) adalah kotak petunjuk warna yang menjelaskan kelompok/seri data yang diwakili oleh masing-masing warna batang/garis."
+    "explanation": "Rubrik penilaian Aspek 3 LKPD mensyaratkan grafik yang berkualitas memiliki judul visualisasi yang jelas, label sumbu/kategori yang tegas, akurasi data angka, serta kerapian tata letak."
   },
   {
-    "q": "Siti membuat grafik di Excel dari tabel kolom 'Tahun' (2021, 2022, 2023) dan 'Jumlah Pendaftar'. Saat grafik muncul, angka Tahun malah ikut menjadi batang tinggi tersendiri setinggi 2000-an, bukan menjadi label sumbu horizontal (bawah). Cara analitis terbaik untuk memperbaiki masalah ini adalah...",
-    "difficulty": "HOTS",
+    "q": "Pada Fase 5 (Menguji Hasil), setiap kelompok mempresentasikan karyanya selama ±2 menit di depan kelas. Sistematika penyampaian presentasi yang paling efektif sesuai panduan lembar LKPD adalah...",
     "options": [
-      "Menghapus seluruh isi tabel dan mengetik ulang dari awal",
-      "Menggunakan fitur 'Select Data' lalu mengatur kolom Tahun pada 'Horizontal (Category) Axis Labels'",
-      "Memperbesar zoom layar monitor hingga 200%",
-      "Mengganti seluruh angka tahun menjadi angka nol"
+      "Membaca seluruh angka mentah di tabel satu per satu tanpa kesimpulan",
+      "Menyampaikan topik & alasan, sumber data, 4 tahapan analisis, alasan jenis grafik, serta kesimpulan utama",
+      "Hanya menyebutkan nama anggota kelompok lalu langsung menutup presentasi",
+      "Membicarakan topik lain di luar proyek visualisasi data yang dibuat"
     ],
     "answer": 1,
-    "explanation": "Excel mengira angka tahun numerik sebagai seri nilai. Solusinya adalah membuka 'Select Data Source', hapus Tahun dari Legend Entries (Series), dan masukkan ke Horizontal (Category) Axis Labels."
+    "explanation": "Fase 5 LKPD memandu 5 poin presentasi ringkas dan berbobot: (1) Topik & alasan, (2) Sumber data & proses pengumpulan, (3) Penerapan 4 tahapan analisis, (4) Alasan jenis visualisasi, dan (5) Kesimpulan utama."
   },
   {
-    "q": "Di Excel, sebuah sel angka nilai ulangan tidak sengaja diawali tanda petik ('85) sehingga merapat ke sisi kiri sel. Saat dibuat grafik kolom, batang untuk nilai tersebut tidak muncul atau terbaca nol. Apa penyebab analitis dan solusinya?",
-    "difficulty": "HOTS",
+    "q": "Proyek ini berakar pada nilai Panca Cinta: 'Cinta Diri dan Sesama Manusia'. Manakah contoh pemanfaatan hasil grafik data madrasah yang paling mencerminkan wujud kepedulian kepada sesama teman?",
     "options": [
-      "Komputer terkena virus dan harus dimatikan",
-      "Angka tersebut terbaca sebagai data Teks sehingga diabaikan grafik numerik; solusinya hapus tanda petik dan ubah format sel menjadi Number/General",
-      "Layar Excel terlalu silau sehingga grafik tidak terlihat",
-      "Jumlah baris terlalu sedikit sehingga Excel menolak membuat grafik"
+      "Memajang nama teman yang nilainya rendah di papan pengumuman untuk ditertawakan",
+      "Memanfaatkan grafik data transportasi untuk mengusulkan program berbagi tumpangan (nebeng) bagi teman yang berjalan kaki jauh",
+      "Menyembunyikan informasi grafik agar kelompok lain tidak belajar apa-apa",
+      "Menghapus data responden teman yang tidak akrab dengan kelompok kita"
     ],
     "answer": 1,
-    "explanation": "Di Excel, teks diawali tanda petik dianggap teks non-numerik. Chart kolom numerik mengabaikan teks, sehingga sel harus dibersihkan dan diformat menjadi angka murni (Number/General)."
+    "explanation": "Visualisasi data bukan sekadar gambar, melainkan sarana empati dan kepedulian nyata (Panca Cinta: Cinta Diri & Sesama Manusia) untuk menghadirkan solusi yang meringankan beban sesama teman di madrasah."
   },
   {
-    "q": "Sebelum membuat diagram batang di Excel, Budi ingin data nilai ujian siswa tersusun urut dari yang tertinggi ke yang terendah agar grafiknya berbentuk tangga menurun yang rapi. Fitur Excel yang harus digunakan Budi adalah...",
-    "difficulty": "MOTS",
+    "q": "Pada bagian Refleksi LKPD, kelompok menyimpulkan: 'Grafik menunjukkan kehadiran siswa kelas IX menurun pada hari Senin karena banyak siswa terkendala transportasi pagi'. Sikap reflektif berbasis data yang paling tepat adalah...",
     "options": [
-      "Find & Replace",
-      "Sort Largest to Smallest (Z to A)",
-      "Conditional Formatting",
-      "Wrap Text"
+      "Menyalahkan cuaca dan mengabaikan hasil grafik yang sudah dibuat",
+      "Menjadikan temuan data sebagai dasar evaluasi diri untuk disiplin waktu dan berkoordinasi mencari solusi bersama madrasah",
+      "Mengubah angka di tabel agar grafik kehadiran tampak sempurna dan tinggi",
+      "Tidak memedulikan hasil data karena tugas proyek sudah selesai dikumpulkan"
     ],
     "answer": 1,
-    "explanation": "Fitur 'Sort Largest to Smallest' pada Excel akan mengurutkan angka dari yang terbesar ke terkecil sehingga grafik batang yang dihasilkan tersusun menurun secara estetis dan sistematis."
-  },
-  {
-    "q": "Guru memiliki tabel perkembangan nilai rata-rata bulanan (Januari–Mei) untuk 3 mata pelajaran sekaligus (Matematika, IPA, dan Informatika). Jenis chart Excel mana yang paling efektif untuk membandingkan laju kenaikan dan penurunan ketiga pelajaran tersebut secara bersamaan?",
-    "difficulty": "HOTS",
-    "options": [
-      "Tiga buah Pie Chart terpisah tanpa angka",
-      "Line Chart (Diagram Garis) multi-garis dengan penanda (markers) warna berbeda",
-      "Diagram Donat 3D",
-      "Histogram satu warna tanpa legenda"
-    ],
-    "answer": 1,
-    "explanation": "Multi-line chart (grafik garis ganda) dengan warna berbeda di Excel adalah visualisasi terbaik untuk membandingkan tren kenaikan dan penurunan beberapa kategori dari waktu ke waktu secara bersamaan."
-  },
-  {
-    "q": "Berdasarkan grafik batang ganda hasil olahan Excel tentang Penjualan vs Laba Bersih Kantin: Produk Keripik terjual 200 bungkus dengan laba Rp 40.000, sedangkan Roti Bakar terjual 60 porsi dengan laba Rp 120.000. Rekomendasi manajerial berbasis data yang paling bijak untuk pengurus kantin adalah...",
-    "difficulty": "HOTS",
-    "options": [
-      "Menghentikan penjualan Roti Bakar karena jumlah porsinya lebih sedikit dibanding Keripik",
-      "Mempertahankan dan memprioritaskan promosi Roti Bakar karena memberi margin laba 3x lebih besar, serta meninjau ulang modal/harga Keripik",
-      "Menutup kantin sekolah karena grafik penjualannya tidak seimbang",
-      "Menjual Keripik secara gratis kepada seluruh siswa"
-    ],
-    "answer": 1,
-    "explanation": "Keputusan analitis berbasis data (HOTS) menimbang profitabilitas: Roti Bakar menghasilkan keuntungan bersih jauh lebih tinggi (Rp 120.000 vs Rp 40.000) meskipun porsi penjualannya lebih sedikit, sehingga layak dipromosikan lebih gencar."
+    "explanation": "Refleksi pembelajaran berbasis proyek (PjBL) menuntun peserta didik menggunakan kesimpulan data nyata untuk introspeksi diri, meningkatkan kedisiplinan, dan berkolaborasi memecahkan permasalahan nyata."
   }
 ];
 
@@ -1577,7 +1567,7 @@ function switchQuizTab(tabNum) {
     if (tabNum === 1) {
       badgeTitle.textContent = 'Kuis 1: Analisis & Visualisasi Data (Bab 2 Komprehensif • 10 Soal)';
     } else {
-      badgeTitle.textContent = 'Kuis 2: Praktik Visualisasi di Microsoft Excel (10 Soal)';
+      badgeTitle.textContent = 'Kuis 2: Proyek Visualisasi Data Nyata Madrasah (LKPD PjBL • 10 Soal)';
     }
   }
 
@@ -1801,10 +1791,10 @@ function renderExamPaperContent(includeAnswerKey = false) {
   const questions = getCurrentQuizQuestions();
   const titleTopic = (tabNum === 1)
     ? 'BAB 2. ANALISIS DATA DENGAN TEKNIK VISUALISASI'
-    : 'PRAKTIK AKHIR BAB 2: MEMBUAT VISUALISASI DATA DI MICROSOFT EXCEL';
+    : 'ASESMEN PROYEK: VISUALISASI DATA NYATA MADRASAH (LKPD PJBL KELAS IX)';
   const subTopic = (tabNum === 1)
     ? 'Materi: Pengertian Data, Jenis-Jenis Data, Tahapan Analisis, dan Ragam Visualisasi Data'
-    : 'Materi: Pemilihan Tipe Chart, Format Cells, Data Labels, Legend, dan Troubleshooting Excel';
+    : 'Topik Panca Cinta: Cinta Diri & Sesama Manusia • 4 Tahapan Analisis, Desain Grafik & Presentasi Data Nyata';
 
   let questionsHtml = '';
   const letters = ['A', 'B', 'C', 'D'];
