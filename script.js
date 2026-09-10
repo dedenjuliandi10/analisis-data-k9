@@ -1577,7 +1577,7 @@ function switchQuizTab(tabNum) {
     if (tabNum === 1) {
       badgeTitle.textContent = 'Kuis 1: Analisis & Visualisasi Data (Bab 2 Komprehensif • 10 Soal)';
     } else {
-      badgeTitle.textContent = 'Kuis 2: Praktik Visualisasi di Microsoft Excel (Tingkat MOTS & HOTS • 10 Soal)';
+      badgeTitle.textContent = 'Kuis 2: Praktik Visualisasi di Microsoft Excel (10 Soal)';
     }
   }
 
@@ -1616,16 +1616,10 @@ function loadQuestion(index) {
   const barFill = document.getElementById('quizBarFill');
   if (barFill) barFill.style.width = `${progressPercent}%`;
 
-  // Tag Kesulitan (MOTS / HOTS)
+  // Tag Kesulitan (MOTS / HOTS dihilangkan agar soal utuh tanpa label)
   const diffTag = document.getElementById('quizDifficultyTag');
   if (diffTag) {
-    if (qData.difficulty) {
-      diffTag.style.display = 'inline-block';
-      diffTag.textContent = qData.difficulty;
-      diffTag.className = `quiz-difficulty-tag tag-${qData.difficulty.toLowerCase()}`;
-    } else {
-      diffTag.style.display = 'none';
-    }
+    diffTag.style.display = 'none';
   }
 
   // Teks Soal
@@ -1810,7 +1804,7 @@ function renderExamPaperContent(includeAnswerKey = false) {
     : 'PRAKTIK AKHIR BAB 2: MEMBUAT VISUALISASI DATA DI MICROSOFT EXCEL';
   const subTopic = (tabNum === 1)
     ? 'Materi: Pengertian Data, Jenis-Jenis Data, Tahapan Analisis, dan Ragam Visualisasi Data'
-    : 'Materi: Pemilihan Tipe Chart, Format Cells, Data Labels, Legend, dan Troubleshooting Excel (MOTS & HOTS)';
+    : 'Materi: Pemilihan Tipe Chart, Format Cells, Data Labels, Legend, dan Troubleshooting Excel';
 
   let questionsHtml = '';
   const letters = ['A', 'B', 'C', 'D'];
@@ -1821,10 +1815,9 @@ function renderExamPaperContent(includeAnswerKey = false) {
       optsHtml += `<li><strong>${letters[oIdx]}.</strong> ${opt}</li>`;
     });
 
-    const diffBadge = q.difficulty ? ` [${q.difficulty}]` : '';
     questionsHtml += `
       <div class="exam-q-box">
-        <div class="exam-q-text">${idx + 1}.${diffBadge} ${q.q}</div>
+        <div class="exam-q-text">${idx + 1}. ${q.q}</div>
         <ul class="exam-opt-list">
           ${optsHtml}
         </ul>
