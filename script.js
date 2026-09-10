@@ -20,9 +20,9 @@ const APP_STATE = {
   act2SelectedLeft: null,
   act2Matches: {},
   act3Answers: { 1: null, 2: null, 3: null },
-  quizIndex: 0,
-  quizScore: 0,
-  quizAnswers: [],
+  quizActiveTab: 1, // 1: Bab 2 Komprehensif, 2: Excel MOTS & HOTS
+  quiz1State: { index: 0, score: 0, answers: [] },
+  quiz2State: { index: 0, score: 0, answers: [] },
   modalChartInstance: null,
   act3ChartInstance: null,
 
@@ -196,116 +196,249 @@ const VIZ_DATA = {
 };
 
 // Data Kuis 10 Soal Lengkap
-const QUIZ_QUESTIONS = [
+const QUIZ_1_QUESTIONS = [
   {
-    q: "Visualisasi data digunakan untuk...",
-    options: [
-      "Menghapus semua data yang ada di komputer",
-      "Membuat data lebih sulit dan rumit dipahami",
-      "Menyajikan data agar lebih mudah dipahami",
-      "Menghilangkan informasi penting pada tabel"
+    "q": "Sekumpulan fakta, angka, simbol, atau keterangan tentang suatu hal yang belum diolah dan belum memiliki makna tersendiri disebut...",
+    "difficulty": "MOTS",
+    "options": [
+      "Informasi",
+      "Data",
+      "Algoritma",
+      "Instruksi"
     ],
-    answer: 2,
-    explanation: "Visualisasi data bertujuan menyajikan data mentah menjadi bentuk visual (grafik/tabel) sehingga informasi lebih mudah dan cepat dipahami."
+    "answer": 1,
+    "explanation": "Data adalah fakta mentah yang belum diolah dan belum memiliki makna tersendiri. Setelah diolah dan dianalisis, barulah data berubah menjadi informasi yang bermakna."
   },
   {
-    q: "Proses memeriksa, membersihkan, mengolah, dan menafsirkan data untuk mendapatkan informasi yang bermakna disebut...",
-    options: [
+    "q": "Proses memeriksa, membersihkan, mengolah, dan menafsirkan data untuk mendapatkan informasi yang bermakna dan berguna dalam mengambil keputusan disebut...",
+    "difficulty": "MOTS",
+    "options": [
       "Analisis data",
       "Penyimpanan berkas",
-      "Pemrograman game",
-      "Perakitan komputer"
+      "Perakitan perangkat keras",
+      "Enkripsi kode biner"
     ],
-    answer: 0,
-    explanation: "Pengertian analisis data adalah proses mengolah data secara sistematis hingga menghasilkan wawasan dan informasi yang bermanfaat."
+    "answer": 0,
+    "explanation": "Analisis data adalah proses sistematis (memeriksa, membersihkan, mengolah, dan menafsirkan) data untuk menghasilkan wawasan/informasi bermakna."
   },
   {
-    q: "Langkah pertama yang wajib dilakukan dalam tahapan analisis data adalah...",
-    options: [
-      "Menyajikan hasil akhir",
-      "Mengumpulkan data",
-      "Membuat diagram lingkaran",
-      "Menarik kesimpulan langsung"
+    "q": "Data berupa nilai ulangan (85, 90, 72), suhu udara (32°C), dan jumlah siswa (30 orang) tergolong ke dalam jenis data...",
+    "difficulty": "MOTS",
+    "options": [
+      "Kualitatif",
+      "Kuantitatif",
+      "Sekunder",
+      "Abstrak"
     ],
-    answer: 1,
-    explanation: "Tahap awal dari alur analisis data adalah Mengumpulkan Data sesuai dengan tujuan yang ingin dicapai."
+    "answer": 1,
+    "explanation": "Data Kuantitatif adalah data berupa angka/bilangan yang dapat dihitung atau diukur secara langsung."
   },
   {
-    q: "Pada tahap pembersihan data (data cleaning), kegiatan yang dilakukan adalah...",
-    options: [
-      "Menghapus data kosong, salah, atau duplikat",
-      "Mengganti seluruh angka dengan huruf acak",
-      "Menyebarkan kuesioner baru ke sekolah lain",
-      "Membuat presentasi grafik di depan kelas"
+    "q": "Data warna favorit siswa (\"merah\", \"biru\"), pendapat kepuasan (\"senang\", \"tidak senang\"), dan jenis kelamin tergolong ke dalam jenis data...",
+    "difficulty": "MOTS",
+    "options": [
+      "Kuantitatif",
+      "Numerik",
+      "Kualitatif",
+      "Kontinu"
     ],
-    answer: 0,
-    explanation: "Membersihkan data berfokus memeriksa dan memperbaiki data anomali, nilai kosong, atau data yang terinput ganda."
+    "answer": 2,
+    "explanation": "Data Kualitatif berupa deskripsi, kategori, atau label tekstual yang tidak berbentuk angka."
   },
   {
-    q: "Teknik visualisasi yang paling cocok untuk membandingkan data antarbeberapa kategori yang berbeda adalah...",
-    options: [
-      "Scatter plot",
-      "Diagram batang",
-      "Diagram garis",
-      "Teks deskripsi panjang"
+    "q": "Ahmad mengunduh laporan sensus penduduk resmi dari website BPS, sedangkan Rina menyebarkan angket mandiri ke teman sekelasnya. Berdasarkan sumbernya, jenis data Ahmad dan Rina berturut-turut adalah...",
+    "difficulty": "HOTS",
+    "options": [
+      "Data Primer dan Data Sekunder",
+      "Data Sekunder dan Data Primer",
+      "Keduanya Data Primer",
+      "Keduanya Data Sekunder"
     ],
-    answer: 1,
-    explanation: "Diagram batang dirancang khusus agar kita bisa membandingkan tinggi/panjang batang tiap kategori dengan sangat jelas."
+    "answer": 1,
+    "explanation": "Ahmad memanfaatkan data yang sudah diterbitkan lembaga lain (Data Sekunder), sedangkan Rina mengumpulkan langsung dari sumber asli/tangan pertama (Data Primer)."
   },
   {
-    q: "Jika kita ingin melihat perubahan suhu udara dari hari Senin sampai hari Minggu, jenis diagram yang paling tepat digunakan adalah...",
-    options: [
-      "Diagram garis",
-      "Diagram lingkaran",
-      "Scatter plot",
-      "Tabel teks acak"
+    "q": "Urutan empat tahap pertama dalam proses analisis data yang tepat dan sistematis adalah...",
+    "difficulty": "MOTS",
+    "options": [
+      "Mengolah ➔ Menyajikan ➔ Membersihkan ➔ Mengumpulkan",
+      "Mengumpulkan ➔ Membersihkan ➔ Mengolah ➔ Memvisualisasikan",
+      "Memvisualisasikan ➔ Menafsirkan ➔ Mengumpulkan ➔ Menyajikan",
+      "Membersihkan ➔ Mengumpulkan ➔ Menyajikan ➔ Mengolah"
     ],
-    answer: 0,
-    explanation: "Diagram garis sangat ideal untuk melihat pergerakan, tren kenaikan, dan penurunan data dari waktu ke waktu (time-series)."
+    "answer": 1,
+    "explanation": "Alur tahapan analisis data dimulai dari Mengumpulkan Data ➔ Membersihkan Data ➔ Mengolah Data ➔ Memvisualisasikan Data."
   },
   {
-    q: "Diagram yang berbentuk lingkaran dan dibagi menjadi beberapa juring untuk menunjukkan proporsi dari keseluruhan (100%) adalah...",
-    options: [
-      "Histogram",
-      "Diagram garis",
-      "Diagram lingkaran",
-      "Scatter plot"
+    "q": "Pada tahap pembersihan data (data cleaning), ditemukan data tinggi badan: [155 cm, 150 cm, 1520 cm, 160 cm, -10 cm]. Tindakan yang benar adalah...",
+    "difficulty": "HOTS",
+    "options": [
+      "Membiarkan seluruh data apa adanya tanpa koreksi",
+      "Memperbaiki atau membuang angka 1520 cm dan -10 cm karena merupakan anomali salah ketik",
+      "Mengubah seluruh data menjadi teks deskriptif",
+      "Menjumlahkan seluruh angka tersebut ke dalam nilai rata-rata"
     ],
-    answer: 2,
-    explanation: "Diagram lingkaran (pie chart) memperlihatkan porsi atau persentase masing-masing kategori terhadap keseluruhan 100%."
+    "answer": 1,
+    "explanation": "Angka 1520 cm dan -10 cm adalah data anomali (outlier/kesalahan ketik) yang tidak masuk akal sehingga wajib dibersihkan agar hasil analisis tidak keliru."
   },
   {
-    q: "Perbedaan utama antara Histogram dengan Diagram Batang biasa adalah...",
-    options: [
-      "Histogram tidak menggunakan warna sama sekali",
-      "Histogram batangnya saling berdempetan untuk data rentang kontinu",
-      "Histogram hanya bisa dibuat dengan kertas dan pulpen",
-      "Diagram batang tidak memiliki sumbu X dan Y"
+    "q": "Jika guru ingin membandingkan nilai rata-rata ulangan harian antara kelas 8A, 8B, 8C, dan 8D, teknik visualisasi yang paling tepat digunakan adalah...",
+    "difficulty": "MOTS",
+    "options": [
+      "Diagram Batang (Bar Chart)",
+      "Diagram Garis (Line Chart)",
+      "Scatter Plot",
+      "Histogram"
     ],
-    answer: 1,
-    explanation: "Histogram batangnya berdempetan tanpa celah karena mewakili kelas interval data angka kontinu."
+    "answer": 0,
+    "explanation": "Diagram batang dirancang khusus untuk membandingkan nilai kuantitas antarbeberapa kategori data diskrit (kelas 8A, 8B, 8C, 8D)."
   },
   {
-    q: "Untuk melihat apakah ada hubungan (korelasi) antara jam belajar siswa dengan nilai ulangan, visualisasi yang paling cocok adalah...",
-    options: [
-      "Scatter plot",
-      "Diagram lingkaran",
-      "Diagram batang mendatar",
-      "Peta wilayah"
+    "q": "Diagram berbentuk lingkaran yang terbagi menjadi beberapa juring untuk memperlihatkan proporsi persentase dari keseluruhan total 100% adalah...",
+    "difficulty": "MOTS",
+    "options": [
+      "Diagram Garis (Line Chart)",
+      "Diagram Lingkaran (Pie Chart)",
+      "Scatter Plot",
+      "Histogram"
     ],
-    answer: 0,
-    explanation: "Scatter plot menyajikan titik-titik koordinat dua variabel untuk mengamati apakah ada hubungan positif, negatif, atau acak."
+    "answer": 1,
+    "explanation": "Diagram lingkaran (pie chart) sangat cocok untuk menunjukkan bagian, persentase, atau proporsi kategori terhadap keseluruhan 100%."
   },
   {
-    q: "Mengapa kesimpulan dalam analisis data harus diambil berdasarkan data dan fakta yang ada?",
-    options: [
-      "Agar terlihat keren di depan guru",
-      "Agar keputusan yang diambil tepat dan dapat dipertanggungjawabkan",
-      "Supaya data aslinya bisa segera dihapus",
-      "Supaya tidak perlu membuat grafik visualisasi"
+    "q": "Mengapa batang pada Histogram saling berdempetan tanpa celah pemisah, berbeda dengan Diagram Batang biasa yang memiliki celah antarkategori?",
+    "difficulty": "HOTS",
+    "options": [
+      "Supaya menghemat tempat pada tampilan layar monitor",
+      "Karena histogram mewakili rentang interval data numerik yang kontinu dan bersambung",
+      "Karena histogram hanya dapat menampilkan satu angka saja",
+      "Karena diagram batang tidak memiliki sumbu koordinat"
     ],
-    answer: 1,
-    explanation: "Kesimpulan berbasis data (data-driven decision) menghindarkan kita dari perkiraan asal-asalan sehingga keputusan menjadi objektif dan tepat."
+    "answer": 1,
+    "explanation": "Histogram batangnya berdempetan tanpa jeda karena menyajikan rentang kelas interval data kontinu yang bersambung tanpa jeda (misal: rentang nilai 61-70, 71-80, 81-90)."
+  }
+];
+
+const QUIZ_2_QUESTIONS = [
+  {
+    "q": "Langkah awal yang paling tepat sebelum membuat grafik (chart) pada lembar kerja Microsoft Excel adalah...",
+    "difficulty": "MOTS",
+    "options": [
+      "Langsung menekan tombol Print di menu File",
+      "Memilih (menyorot/mem-blok) rentang sel data tabel beserta judul kolomnya",
+      "Menghapus seluruh rumus formula yang ada di tabel",
+      "Menutup workbook dan membukanya kembali"
+    ],
+    "answer": 1,
+    "explanation": "Sebelum menyisipkan grafik di Excel, kita wajib menyorot (select) rentang sel data beserta judul kolomnya agar Excel dapat membaca seri data dan label kategori dengan tepat."
+  },
+  {
+    "q": "Pada antarmuka Microsoft Excel, menu Tab Ribbon yang memuat kumpulan ikon untuk memilih dan menyisipkan jenis grafik adalah...",
+    "difficulty": "MOTS",
+    "options": [
+      "Home",
+      "Page Layout",
+      "Insert",
+      "Review"
+    ],
+    "answer": 2,
+    "explanation": "Di Microsoft Excel, seluruh jenis grafik (Column, Line, Pie, Bar, Scatter) berada di Tab Ribbon 'Insert' pada grup 'Charts'."
+  },
+  {
+    "q": "Kamu memiliki data persentase anggaran kegiatan OSIS dari total 100%. Tipe chart Excel manakah yang paling ideal untuk menyajikan data proporsi tersebut?",
+    "difficulty": "MOTS",
+    "options": [
+      "Line Chart",
+      "Pie Chart (Diagram Lingkaran)",
+      "Scatter Plot",
+      "Radar Chart"
+    ],
+    "answer": 1,
+    "explanation": "Pie Chart di Excel dirancang khusus untuk memvisualisasikan bagian atau proporsi persentase dari keseluruhan total 100%."
+  },
+  {
+    "q": "Di Microsoft Excel, elemen grafik yang berfungsi menampilkan nilai angka pasti (misal: 85, 90, 75) tepat di atas atau di dalam batang grafik disebut...",
+    "difficulty": "MOTS",
+    "options": [
+      "Chart Title",
+      "Gridlines",
+      "Data Labels",
+      "Axis Titles"
+    ],
+    "answer": 2,
+    "explanation": "Data Labels (Label Data) berfungsi menampilkan angka nilai aktual langsung pada elemen batang atau titik grafik di Excel."
+  },
+  {
+    "q": "Pada diagram batang ganda di Excel yang membandingkan data siswa Laki-laki dan Perempuan, fungsi dari elemen 'Legend' (Legenda) adalah...",
+    "difficulty": "MOTS",
+    "options": [
+      "Menampilkan kotak keterangan warna yang mewakili data Laki-laki dan Perempuan",
+      "Mengubah warna tema seluruh lembar kerja Excel",
+      "Mengurutkan abjad nama siswa dari A sampai Z",
+      "Menghapus seri data yang bernilai nol"
+    ],
+    "answer": 0,
+    "explanation": "Legend (Legenda) adalah kotak petunjuk warna yang menjelaskan kelompok/seri data yang diwakili oleh masing-masing warna batang/garis."
+  },
+  {
+    "q": "Siti membuat grafik di Excel dari tabel kolom 'Tahun' (2021, 2022, 2023) dan 'Jumlah Pendaftar'. Saat grafik muncul, angka Tahun malah ikut menjadi batang tinggi tersendiri setinggi 2000-an, bukan menjadi label sumbu horizontal (bawah). Cara analitis terbaik untuk memperbaiki masalah ini adalah...",
+    "difficulty": "HOTS",
+    "options": [
+      "Menghapus seluruh isi tabel dan mengetik ulang dari awal",
+      "Menggunakan fitur 'Select Data' lalu mengatur kolom Tahun pada 'Horizontal (Category) Axis Labels'",
+      "Memperbesar zoom layar monitor hingga 200%",
+      "Mengganti seluruh angka tahun menjadi angka nol"
+    ],
+    "answer": 1,
+    "explanation": "Excel mengira angka tahun numerik sebagai seri nilai. Solusinya adalah membuka 'Select Data Source', hapus Tahun dari Legend Entries (Series), dan masukkan ke Horizontal (Category) Axis Labels."
+  },
+  {
+    "q": "Di Excel, sebuah sel angka nilai ulangan tidak sengaja diawali tanda petik ('85) sehingga merapat ke sisi kiri sel. Saat dibuat grafik kolom, batang untuk nilai tersebut tidak muncul atau terbaca nol. Apa penyebab analitis dan solusinya?",
+    "difficulty": "HOTS",
+    "options": [
+      "Komputer terkena virus dan harus dimatikan",
+      "Angka tersebut terbaca sebagai data Teks sehingga diabaikan grafik numerik; solusinya hapus tanda petik dan ubah format sel menjadi Number/General",
+      "Layar Excel terlalu silau sehingga grafik tidak terlihat",
+      "Jumlah baris terlalu sedikit sehingga Excel menolak membuat grafik"
+    ],
+    "answer": 1,
+    "explanation": "Di Excel, teks diawali tanda petik dianggap teks non-numerik. Chart kolom numerik mengabaikan teks, sehingga sel harus dibersihkan dan diformat menjadi angka murni (Number/General)."
+  },
+  {
+    "q": "Sebelum membuat diagram batang di Excel, Budi ingin data nilai ujian siswa tersusun urut dari yang tertinggi ke yang terendah agar grafiknya berbentuk tangga menurun yang rapi. Fitur Excel yang harus digunakan Budi adalah...",
+    "difficulty": "MOTS",
+    "options": [
+      "Find & Replace",
+      "Sort Largest to Smallest (Z to A)",
+      "Conditional Formatting",
+      "Wrap Text"
+    ],
+    "answer": 1,
+    "explanation": "Fitur 'Sort Largest to Smallest' pada Excel akan mengurutkan angka dari yang terbesar ke terkecil sehingga grafik batang yang dihasilkan tersusun menurun secara estetis dan sistematis."
+  },
+  {
+    "q": "Guru memiliki tabel perkembangan nilai rata-rata bulanan (Januari–Mei) untuk 3 mata pelajaran sekaligus (Matematika, IPA, dan Informatika). Jenis chart Excel mana yang paling efektif untuk membandingkan laju kenaikan dan penurunan ketiga pelajaran tersebut secara bersamaan?",
+    "difficulty": "HOTS",
+    "options": [
+      "Tiga buah Pie Chart terpisah tanpa angka",
+      "Line Chart (Diagram Garis) multi-garis dengan penanda (markers) warna berbeda",
+      "Diagram Donat 3D",
+      "Histogram satu warna tanpa legenda"
+    ],
+    "answer": 1,
+    "explanation": "Multi-line chart (grafik garis ganda) dengan warna berbeda di Excel adalah visualisasi terbaik untuk membandingkan tren kenaikan dan penurunan beberapa kategori dari waktu ke waktu secara bersamaan."
+  },
+  {
+    "q": "Berdasarkan grafik batang ganda hasil olahan Excel tentang Penjualan vs Laba Bersih Kantin: Produk Keripik terjual 200 bungkus dengan laba Rp 40.000, sedangkan Roti Bakar terjual 60 porsi dengan laba Rp 120.000. Rekomendasi manajerial berbasis data yang paling bijak untuk pengurus kantin adalah...",
+    "difficulty": "HOTS",
+    "options": [
+      "Menghentikan penjualan Roti Bakar karena jumlah porsinya lebih sedikit dibanding Keripik",
+      "Mempertahankan dan memprioritaskan promosi Roti Bakar karena memberi margin laba 3x lebih besar, serta meninjau ulang modal/harga Keripik",
+      "Menutup kantin sekolah karena grafik penjualannya tidak seimbang",
+      "Menjual Keripik secara gratis kepada seluruh siswa"
+    ],
+    "answer": 1,
+    "explanation": "Keputusan analitis berbasis data (HOTS) menimbang profitabilitas: Roti Bakar menghasilkan keuntungan bersih jauh lebih tinggi (Rp 120.000 vs Rp 40.000) meskipun porsi penjualannya lebih sedikit, sehingga layak dipromosikan lebih gencar."
   }
 ];
 
@@ -1416,96 +1549,185 @@ function resetCocBestRecord(showNotice = true) {
 }
 
 // ==========================================================================
-// 9. MENU KUIS (10 SOAL PILIHAN GANDA - 1 SOAL PER HALAMAN)
+// 9. MENU KUIS (2 TAB: BAB 2 KOMPREHENSIF & PRAKTIK EXCEL MOTS/HOTS)
 // ==========================================================================
+
+function getCurrentQuizQuestions() {
+  return (APP_STATE.quizActiveTab === 2) ? QUIZ_2_QUESTIONS : QUIZ_1_QUESTIONS;
+}
+
+function getCurrentQuizState() {
+  return (APP_STATE.quizActiveTab === 2) ? APP_STATE.quiz2State : APP_STATE.quiz1State;
+}
+
+function switchQuizTab(tabNum) {
+  APP_STATE.quizActiveTab = tabNum;
+
+  // Toggle Tab Buttons
+  const tab1Btn = document.getElementById('tabBtnQuiz1');
+  const tab2Btn = document.getElementById('tabBtnQuiz2');
+  if (tab1Btn && tab2Btn) {
+    tab1Btn.classList.toggle('active', tabNum === 1);
+    tab2Btn.classList.toggle('active', tabNum === 2);
+  }
+
+  // Update Badge Info Bar
+  const badgeTitle = document.getElementById('quizBadgeTitle');
+  if (badgeTitle) {
+    if (tabNum === 1) {
+      badgeTitle.textContent = 'Kuis 1: Analisis & Visualisasi Data (Bab 2 Komprehensif • 10 Soal)';
+    } else {
+      badgeTitle.textContent = 'Kuis 2: Praktik Visualisasi di Microsoft Excel (Tingkat MOTS & HOTS • 10 Soal)';
+    }
+  }
+
+  // Reset finish card & show playing box
+  const playingBox = document.getElementById('quizPlayingBox');
+  const finishCard = document.getElementById('quizFinishCard');
+  if (playingBox) playingBox.style.display = 'block';
+  if (finishCard) finishCard.style.display = 'none';
+
+  const qState = getCurrentQuizState();
+  loadQuestion(qState.index);
+  playTone(520, 'sine', 0.1);
+}
+
 function loadQuestion(index) {
-  const total = QUIZ_QUESTIONS.length;
+  const questions = getCurrentQuizQuestions();
+  const qState = getCurrentQuizState();
+  const total = questions.length;
+
   if (index >= total) {
     showQuizResult();
     return;
   }
 
-  const qData = QUIZ_QUESTIONS[index];
-  document.getElementById('quizProgressText').textContent = `SOAL ${index + 1} / ${total}`;
-  document.getElementById('quizRunningScore').textContent = `Skor: ${APP_STATE.quizScore}`;
+  qState.index = index;
+  const qData = questions[index];
 
-  // Progress Bar
+  // Update Step & Running Score
+  const progressText = document.getElementById('quizProgressText');
+  const scoreText = document.getElementById('quizRunningScore');
+  if (progressText) progressText.textContent = `SOAL ${index + 1} / ${total}`;
+  if (scoreText) scoreText.textContent = `Skor: ${qState.score}`;
+
+  // Progress Bar Fill
   const progressPercent = Math.round(((index + 1) / total) * 100);
-  document.getElementById('quizBarFill').style.width = `${progressPercent}%`;
+  const barFill = document.getElementById('quizBarFill');
+  if (barFill) barFill.style.width = `${progressPercent}%`;
+
+  // Tag Kesulitan (MOTS / HOTS)
+  const diffTag = document.getElementById('quizDifficultyTag');
+  if (diffTag) {
+    if (qData.difficulty) {
+      diffTag.style.display = 'inline-block';
+      diffTag.textContent = qData.difficulty;
+      diffTag.className = `quiz-difficulty-tag tag-${qData.difficulty.toLowerCase()}`;
+    } else {
+      diffTag.style.display = 'none';
+    }
+  }
 
   // Teks Soal
-  document.getElementById('quizQuestionTitle').textContent = qData.q;
+  const qTitle = document.getElementById('quizQuestionTitle');
+  if (qTitle) qTitle.textContent = qData.q;
 
-  // Options
+  // Render Options A, B, C, D
   const container = document.getElementById('quizOptionsList');
-  container.innerHTML = '';
-  const letters = ['A', 'B', 'C', 'D'];
+  if (container) {
+    container.innerHTML = '';
+    const letters = ['A', 'B', 'C', 'D'];
 
-  qData.options.forEach((optText, optIdx) => {
-    const optBtn = document.createElement('button');
-    optBtn.className = 'quiz-option-btn';
-    optBtn.innerHTML = `
-      <span class="quiz-opt-letter">${letters[optIdx]}</span>
-      <span class="quiz-opt-text">${optText}</span>
-    `;
-    optBtn.onclick = () => answerQuestion(optIdx);
-    container.appendChild(optBtn);
-  });
+    qData.options.forEach((optText, optIdx) => {
+      const optBtn = document.createElement('button');
+      optBtn.className = 'quiz-option-btn';
+      optBtn.innerHTML = `
+        <span class="quiz-opt-letter">${letters[optIdx]}</span>
+        <span class="quiz-opt-text">${optText}</span>
+      `;
+      optBtn.onclick = () => answerQuestion(optIdx);
+      container.appendChild(optBtn);
+    });
+  }
 
-  document.getElementById('quizFeedbackBanner').style.display = 'none';
-  document.getElementById('btnNextQuestion').style.display = 'none';
+  const feedbackBanner = document.getElementById('quizFeedbackBanner');
+  const nextBtn = document.getElementById('btnNextQuestion');
+  if (feedbackBanner) feedbackBanner.style.display = 'none';
+  if (nextBtn) nextBtn.style.display = 'none';
 }
 
 function answerQuestion(chosenIndex) {
-  const currentQ = QUIZ_QUESTIONS[APP_STATE.quizIndex];
+  const questions = getCurrentQuizQuestions();
+  const qState = getCurrentQuizState();
+  const currentQ = questions[qState.index];
+
   const buttons = document.querySelectorAll('.quiz-option-btn');
   buttons.forEach(b => b.disabled = true);
 
   const feedbackEl = document.getElementById('quizFeedbackBanner');
-  feedbackEl.style.display = 'block';
+  if (feedbackEl) feedbackEl.style.display = 'block';
 
   if (chosenIndex === currentQ.answer) {
-    buttons[chosenIndex].classList.add('correct');
-    feedbackEl.className = 'quiz-feedback-banner correct';
-    feedbackEl.innerHTML = `🎉 <strong>Benar!</strong> ${currentQ.explanation}`;
-    APP_STATE.quizScore += 10;
-    APP_STATE.quizAnswers.push(true);
+    if (buttons[chosenIndex]) buttons[chosenIndex].classList.add('correct');
+    if (feedbackEl) {
+      feedbackEl.className = 'quiz-feedback-banner correct';
+      feedbackEl.innerHTML = `🎉 <strong>Benar!</strong> ${currentQ.explanation}`;
+    }
+    qState.score += 10;
+    qState.answers.push(true);
     playMatchSound();
   } else {
-    buttons[chosenIndex].classList.add('wrong');
-    buttons[currentQ.answer].classList.add('correct');
-    feedbackEl.className = 'quiz-feedback-banner wrong';
-    feedbackEl.innerHTML = `❌ <strong>Kurang tepat.</strong> ${currentQ.explanation}`;
-    APP_STATE.quizAnswers.push(false);
+    if (buttons[chosenIndex]) buttons[chosenIndex].classList.add('wrong');
+    if (buttons[currentQ.answer]) buttons[currentQ.answer].classList.add('correct');
+    if (feedbackEl) {
+      feedbackEl.className = 'quiz-feedback-banner wrong';
+      feedbackEl.innerHTML = `❌ <strong>Kurang tepat.</strong> ${currentQ.explanation}`;
+    }
+    qState.answers.push(false);
     playWrongSound();
   }
 
-  document.getElementById('quizRunningScore').textContent = `Skor: ${APP_STATE.quizScore}`;
+  const scoreText = document.getElementById('quizRunningScore');
+  if (scoreText) scoreText.textContent = `Skor: ${qState.score}`;
 
   const nextBtn = document.getElementById('btnNextQuestion');
-  nextBtn.style.display = 'inline-flex';
-  if (APP_STATE.quizIndex === QUIZ_QUESTIONS.length - 1) {
-    nextBtn.textContent = 'Lihat Hasil Akhir 🏆';
-  } else {
-    nextBtn.textContent = 'Lanjut ke Soal Berikutnya ➡';
+  if (nextBtn) {
+    nextBtn.style.display = 'inline-flex';
+    if (qState.index === questions.length - 1) {
+      nextBtn.textContent = 'Lihat Hasil Akhir 🏆';
+    } else {
+      nextBtn.textContent = 'Lanjut ke Soal Berikutnya ➡';
+    }
   }
 }
 
 function nextQuestion() {
-  APP_STATE.quizIndex++;
-  loadQuestion(APP_STATE.quizIndex);
+  const qState = getCurrentQuizState();
+  qState.index++;
+  loadQuestion(qState.index);
 }
 
 function showQuizResult() {
+  const qState = getCurrentQuizState();
+  const questions = getCurrentQuizQuestions();
+  const tabNum = APP_STATE.quizActiveTab;
+
   document.getElementById('quizPlayingBox').style.display = 'none';
   const finishCard = document.getElementById('quizFinishCard');
   finishCard.style.display = 'block';
 
-  const score = APP_STATE.quizScore;
+  const finishHeading = document.getElementById('quizFinishHeading');
+  if (finishHeading) {
+    finishHeading.textContent = (tabNum === 1) 
+      ? 'Kuis 1: Analisis & Visualisasi Data Selesai!'
+      : 'Kuis 2: Visualisasi di Microsoft Excel Selesai!';
+  }
+
+  const score = qState.score;
   document.getElementById('quizFinalScore').textContent = score;
 
-  const correctCount = APP_STATE.quizAnswers.filter(a => a === true).length;
-  const wrongCount = APP_STATE.quizAnswers.length - correctCount;
+  const correctCount = qState.answers.filter(a => a === true).length;
+  const wrongCount = questions.length - correctCount;
 
   document.getElementById('statCorrectNum').textContent = correctCount;
   document.getElementById('statWrongNum').textContent = wrongCount;
@@ -1518,22 +1740,22 @@ function showQuizResult() {
     categoryEl.textContent = 'Sangat Baik 🏆';
     categoryEl.style.color = '#1e3a8a';
     iconEl.textContent = '🏆';
-    noteEl.textContent = 'Luar biasa! Kamu memahami seluruh konsep analisis dan visualisasi data dengan sangat cemerlang.';
+    noteEl.textContent = 'Luar biasa! Pemahaman konsep dan analisismu sangat cemerlang!';
   } else if (score >= 80) {
     categoryEl.textContent = 'Baik 👍';
     categoryEl.style.color = '#10b981';
     iconEl.textContent = '👍';
-    noteEl.textContent = 'Kerja bagus! Pemahaman materi kamu sudah sangat baik. Terus tingkatkan kemampuan analisismu!';
+    noteEl.textContent = 'Kerja bagus! Keterampilan analisis dan pemahaman materi kamu sudah sangat solid.';
   } else if (score >= 70) {
     categoryEl.textContent = 'Cukup 🙂';
     categoryEl.style.color = '#f59e0b';
     iconEl.textContent = '🙂';
-    noteEl.textContent = 'Sudah cukup memahami dasar-dasarnya. Pelajari kembali teknik visualisasi data agar pemahaman makin mantap.';
+    noteEl.textContent = 'Sudah cukup memahami dasar-dasarnya. Pelajari kembali materi agar pemahaman makin tajam!';
   } else {
     categoryEl.textContent = 'Perlu Belajar Lagi 📚';
     categoryEl.style.color = '#ef4444';
     iconEl.textContent = '📚';
-    noteEl.textContent = 'Jangan berkecil hati! Buka kembali menu Materi dan Tahapan Analisis, lalu coba kerjakan kuis ini lagi.';
+    noteEl.textContent = 'Jangan berkecil hati! Buka kembali materi visualisasi dan coba kerjakan kuis ini lagi.';
   }
 
   playVictoryFanfare();
@@ -1542,15 +1764,203 @@ function showQuizResult() {
   updateProgressUI();
 }
 
-function restartQuiz() {
-  APP_STATE.quizIndex = 0;
-  APP_STATE.quizScore = 0;
-  APP_STATE.quizAnswers = [];
+function restartCurrentQuiz() {
+  const qState = getCurrentQuizState();
+  qState.index = 0;
+  qState.score = 0;
+  qState.answers = [];
 
   document.getElementById('quizPlayingBox').style.display = 'block';
   document.getElementById('quizFinishCard').style.display = 'none';
 
   loadQuestion(0);
+}
+
+// ==========================================================================
+// 10. FITUR CETAK LEMBAR SOAL UJIAN KERTAS (OFFICIAL EXAM SHEET)
+// ==========================================================================
+
+function openPrintExamModal() {
+  renderExamPaperContent(false);
+  const modal = document.getElementById('printExamModal');
+  if (modal) modal.style.display = 'flex';
+  const chk = document.getElementById('chkIncludeAnswerKey');
+  if (chk) chk.checked = false;
+  playTone(600, 'triangle', 0.1);
+}
+
+function closePrintExamModal(event) {
+  if (event && event.target !== event.currentTarget) return;
+  const modal = document.getElementById('printExamModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function toggleAnswerKeyInPrint(include) {
+  renderExamPaperContent(include);
+}
+
+function renderExamPaperContent(includeAnswerKey = false) {
+  const container = document.getElementById('printableExamSheet');
+  if (!container) return;
+
+  const tabNum = APP_STATE.quizActiveTab;
+  const questions = getCurrentQuizQuestions();
+  const titleTopic = (tabNum === 1)
+    ? 'BAB 2. ANALISIS DATA DENGAN TEKNIK VISUALISASI'
+    : 'PRAKTIK AKHIR BAB 2: MEMBUAT VISUALISASI DATA DI MICROSOFT EXCEL';
+  const subTopic = (tabNum === 1)
+    ? 'Materi: Pengertian Data, Jenis-Jenis Data, Tahapan Analisis, dan Ragam Visualisasi Data'
+    : 'Materi: Pemilihan Tipe Chart, Format Cells, Data Labels, Legend, dan Troubleshooting Excel (MOTS & HOTS)';
+
+  let questionsHtml = '';
+  const letters = ['A', 'B', 'C', 'D'];
+
+  questions.forEach((q, idx) => {
+    let optsHtml = '';
+    q.options.forEach((opt, oIdx) => {
+      optsHtml += `<li><strong>${letters[oIdx]}.</strong> ${opt}</li>`;
+    });
+
+    const diffBadge = q.difficulty ? ` [${q.difficulty}]` : '';
+    questionsHtml += `
+      <div class="exam-q-box">
+        <div class="exam-q-text">${idx + 1}.${diffBadge} ${q.q}</div>
+        <ul class="exam-opt-list">
+          ${optsHtml}
+        </ul>
+      </div>
+    `;
+  });
+
+  // Lembar Jawaban Komputer (LJK Mini)
+  let ljkCells = '';
+  for (let i = 1; i <= 10; i++) {
+    ljkCells += `
+      <tr>
+        <td><strong>${i}</strong></td>
+        <td class="exam-ljk-bubbles">[ A ] &nbsp; [ B ] &nbsp; [ C ] &nbsp; [ D ]</td>
+      </tr>
+    `;
+  }
+
+  // Kunci Jawaban & Rubrik Guru
+  let answerKeyHtml = '';
+  if (includeAnswerKey) {
+    let rowsKey = '';
+    questions.forEach((q, idx) => {
+      rowsKey += `
+        <tr>
+          <td align="center"><strong>${idx + 1}</strong></td>
+          <td align="center"><strong>${letters[q.answer]}</strong></td>
+          <td>${q.explanation}</td>
+        </tr>
+      `;
+    });
+
+    answerKeyHtml = `
+      <div class="exam-answer-key-sheet">
+        <div class="exam-key-title">🔑 KUNCI JAWABAN & PEMBAHASAN GURU (RAHASIA)</div>
+        <table class="exam-key-table">
+          <thead>
+            <tr>
+              <th width="8%">No</th>
+              <th width="12%">Kunci</th>
+              <th>Pembahasan Konsep & Alasan Pedagogis</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsKey}
+          </tbody>
+        </table>
+        <div style="font-size: 9pt; color: #475569; margin-top: 0.5rem; text-align: right;">
+          Guru Mata Pelajaran Informatika: <strong>Deden Juliandi, S.Kom</strong> • TIK MTsN 5 Sumedang
+        </div>
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <!-- KOP RESMI MADRASAH -->
+    <div class="exam-kop">
+      <div class="exam-kop-titles">
+        <h4>KEMENTERIAN AGAMA REPUBLIK INDONESIA</h4>
+        <h3>KANTOR KEMENTERIAN AGAMA KABUPATEN SUMEDANG</h3>
+        <h2>MADRASAH TSANAWIYAH NEGERI 5 SUMEDANG</h2>
+        <div class="exam-kop-sub">Jalan Raya Simpang - Parakanmuncang, Sumedang • Terakreditasi A • NPSN: 20277889</div>
+      </div>
+    </div>
+
+    <!-- JUDUL ASESMEN -->
+    <div style="text-align: center; margin-bottom: 1.25rem;">
+      <h3 style="margin: 0; font-size: 12pt; text-transform: uppercase; font-weight: bold; text-decoration: underline;">
+        LEMBAR SOAL ASESMEN SUMATIF / KUIS INFORMATIKA
+      </h3>
+      <div style="font-size: 10pt; font-weight: bold; margin-top: 3px;">
+        ${titleTopic}
+      </div>
+      <div style="font-size: 8.5pt; font-style: italic; color: #333;">
+        ${subTopic}
+      </div>
+    </div>
+
+    <!-- IDENTITAS PESERTA DIDIK -->
+    <div class="exam-meta-box">
+      <div class="meta-col">
+        <p><strong>Nama Lengkap :</strong> ................................................................</p>
+        <p><strong>Kelas / No. Absen :</strong> VIII - ..... / .....</p>
+        <p><strong>Mata Pelajaran :</strong> Informatika (TIK)</p>
+      </div>
+      <div class="meta-col">
+        <p><strong>Hari / Tanggal :</strong> ................................................................</p>
+        <p><strong>Alokasi Waktu :</strong> 25 Menit (10 Soal Pilihan Ganda)</p>
+        <p><strong>Nilai / Paraf Guru :</strong> ............. / .......................................</p>
+      </div>
+    </div>
+
+    <!-- PETUNJUK PENGERJAAN -->
+    <div class="exam-instructions">
+      <strong>PETUNJUK UMUM:</strong>
+      <ol>
+        <li>Tulislah identitas nama, kelas, dan nomor absen secara lengkap pada kolom yang telah disediakan.</li>
+        <li>Bacalah setiap butir soal dengan cermat sebelum menentukan jawaban yang kamu anggap paling benar.</li>
+        <li>Berilah tanda silang (X) atau hitamkan huruf <strong>A, B, C,</strong> atau <strong>D</strong> pada Lembar Jawaban di bawah ini.</li>
+      </ol>
+    </div>
+
+    <!-- GRID 10 BUTIR SOAL -->
+    <div class="exam-questions-grid">
+      ${questionsHtml}
+    </div>
+
+    <!-- LEMBAR JAWABAN SISWA (LJK MINI) -->
+    <div class="exam-ljk-section">
+      <div class="exam-ljk-title">--- LEMBAR JAWABAN KHUSUS SISWA (SILANG PADA OPSI PILIHAN) ---</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 500px; margin: 0 auto;">
+        <table class="exam-ljk-table">
+          <thead>
+            <tr><th width="20%">No</th><th>Pilihan</th></tr>
+          </thead>
+          <tbody>
+            ${ljkCells.split('</tr>').slice(0, 5).join('</tr>') + '</tr>'}
+          </tbody>
+        </table>
+        <table class="exam-ljk-table">
+          <thead>
+            <tr><th width="20%">No</th><th>Pilihan</th></tr>
+          </thead>
+          <tbody>
+            ${ljkCells.split('</tr>').slice(5, 10).join('</tr>') + '</tr>'}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    ${answerKeyHtml}
+  `;
+}
+
+function triggerNativePrint() {
+  window.print();
 }
 
 // Inisialisasi pertanyaan pertama kuis

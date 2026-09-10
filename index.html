@@ -1221,11 +1221,45 @@
     <!-- ============================================== -->
     <!-- 5. MENU KUIS -->
     <!-- ============================================== -->
+        <!-- ============================================== -->
+    <!-- 5. MENU KUIS (2 TAB & CETAK LEMBAR SOAL KERTAS) -->
+    <!-- ============================================== -->
     <section id="kuis" class="content-section">
       <div class="section-heading">
-        <div class="badge-tag">EVALUASI AKHIR</div>
-        <h2>📝 Kuis Interaktif</h2>
-        <p>Jawab 10 soal pilihan ganda berikut untuk menguji pemahaman materi yang telah kamu pelajari.</p>
+        <div class="badge-tag">EVALUASI & ASESMEN</div>
+        <h2>📝 Kuis Interaktif & Lembar Ujian</h2>
+        <p>Pilih tab kuis di bawah ini untuk menguji pemahaman konsep Bab 2 atau keterampilan praktik visualisasi data di Microsoft Excel.</p>
+      </div>
+
+      <!-- NAVIGASI 2 TAB KUIS -->
+      <div class="quiz-nav-container">
+        <div class="quiz-tabs-nav">
+          <button class="quiz-tab active" id="tabBtnQuiz1" onclick="switchQuizTab(1)">
+            <span class="qtab-icon">📋</span>
+            <div class="qtab-text">
+              <strong>Kuis 1: Analisis & Visualisasi Data</strong>
+              <small>Konsep, Pengertian Data, Jenis-Jenis Data & Tahapan (10 Soal)</small>
+            </div>
+          </button>
+          <button class="quiz-tab" id="tabBtnQuiz2" onclick="switchQuizTab(2)">
+            <span class="qtab-icon">💻</span>
+            <div class="qtab-text">
+              <strong>Kuis 2: Visualisasi di Microsoft Excel</strong>
+              <small>Praktik Akhir Bab 2 • Soal Tingkat MOTS & HOTS (10 Soal)</small>
+            </div>
+          </button>
+        </div>
+
+        <!-- ACTION CETAK SOAL KERTAS DI KEDUA TAB -->
+        <div class="quiz-action-bar">
+          <div class="quiz-badge-info" id="quizActiveBadgeInfo">
+            <span class="q-badge-icon">📌</span>
+            <span id="quizBadgeTitle">Kuis 1: Pemahaman Konsep & Jenis Data Bab 2</span>
+          </div>
+          <button class="btn btn-outline btn-print-exam" onclick="openPrintExamModal()" title="Cetak lembar soal rapi seperti lembar ujian kertas madrasah">
+            <span>🖨️ Cetak Lembar Soal Kertas</span>
+          </button>
+        </div>
       </div>
 
       <div class="quiz-stage-container">
@@ -1242,6 +1276,7 @@
           </div>
 
           <div class="quiz-question-holder">
+            <span class="quiz-difficulty-tag" id="quizDifficultyTag" style="display:none;"></span>
             <h3 class="quiz-question-prompt" id="quizQuestionTitle">Visualisasi data digunakan untuk...</h3>
           </div>
 
@@ -1264,7 +1299,7 @@
         <!-- LAYAR HASIL AKHIR KUIS -->
         <div class="quiz-finish-card" id="quizFinishCard" style="display:none;">
           <div class="trophy-icon" id="quizFinalIcon">🏆</div>
-          <h2 class="finish-heading">Kuis Telah Selesai!</h2>
+          <h2 class="finish-heading" id="quizFinishHeading">Kuis Telah Selesai!</h2>
           <div class="score-display-circle">
             <span class="score-number" id="quizFinalScore">100</span>
             <span class="score-denom">/ 100</span>
@@ -1284,11 +1319,14 @@
           </div>
 
           <div class="finish-controls">
-            <button class="btn btn-primary" onclick="restartQuiz()">
-              <span>Ulangi Kuis</span>
+            <button class="btn btn-primary" onclick="restartCurrentQuiz()">
+              <span>🔄 Ulangi Kuis Ini</span>
+            </button>
+            <button class="btn btn-outline" onclick="openPrintExamModal()">
+              <span>🖨️ Cetak Lembar Ujian</span>
             </button>
             <button class="btn btn-outline" onclick="navigateTo('rangkuman')">
-              <span>Buka Rangkuman Materi</span>
+              <span>💡 Buka Rangkuman Materi</span>
             </button>
           </div>
         </div>
@@ -1444,6 +1482,44 @@
       </div>
       <div class="modal-actions">
         <button class="btn btn-primary" onclick="closeHowToPlayModal()">Mengerti, Siap Bermain! 🚀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PREVIEW & CETAK LEMBAR SOAL KERTAS (OFFICIAL EXAM SHEET) -->
+  <div class="modal-backdrop" id="printExamModal" onclick="closePrintExamModal(event)">
+    <div class="modal-dialog modal-print-dialog" onclick="event.stopPropagation()">
+      <div class="print-dialog-header">
+        <div class="print-dialog-title">
+          <span class="print-header-icon">🖨️</span>
+          <div>
+            <h3>Cetak Lembar Soal Ujian Kertas</h3>
+            <p>Pratinjau format lembar soal kertas resmi MTsN 5 Sumedang (Siap Cetak / Simpan PDF)</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closePrintExamModal()" aria-label="Tutup">&times;</button>
+      </div>
+
+      <!-- Action toolbar di modal cetak -->
+      <div class="print-dialog-toolbar">
+        <div class="print-options-left">
+          <label class="print-checkbox-label">
+            <input type="checkbox" id="chkIncludeAnswerKey" onchange="toggleAnswerKeyInPrint(this.checked)">
+            <span>Sertakan Lembar Kunci Jawaban Guru</span>
+          </label>
+        </div>
+        <div class="print-options-right">
+          <button class="btn btn-primary btn-do-print" onclick="triggerNativePrint()">
+            <span>🖨️ Cetak Sekarang / Simpan PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Container Lembar Kertas Ujian (KOP, Identitas, Soal 2 Kolom, LJK) -->
+      <div class="paper-preview-scroll">
+        <div class="exam-paper-sheet" id="printableExamSheet">
+          <!-- Diisi dinamis oleh script.js -->
+        </div>
       </div>
     </div>
   </div>
