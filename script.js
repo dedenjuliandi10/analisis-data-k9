@@ -1801,7 +1801,7 @@ function toggleAnswerKeyInPrint(include) {
 
 function renderExamPaperContent(includeAnswerKey = false) {
   const container = document.getElementById('printableExamSheet');
-  if (!container) return;
+  const printContainer = document.getElementById('printContainer');
 
   const tabNum = APP_STATE.quizActiveTab;
   const questions = getCurrentQuizQuestions();
@@ -1886,7 +1886,7 @@ function renderExamPaperContent(includeAnswerKey = false) {
         <h4>KEMENTERIAN AGAMA REPUBLIK INDONESIA</h4>
         <h3>KANTOR KEMENTERIAN AGAMA KABUPATEN SUMEDANG</h3>
         <h2>MADRASAH TSANAWIYAH NEGERI 5 SUMEDANG</h2>
-        <div class="exam-kop-sub">Jalan Raya Simpang - Parakanmuncang, Sumedang • Terakreditasi A • NPSN: 20277889</div>
+        <div class="exam-kop-sub">Jl. Raden Ali Sadikin No 158 Ujungjaya, Kab. Sumedang • Terakreditasi A • NPSN: 20277889</div>
       </div>
     </div>
 
@@ -1957,9 +1957,16 @@ function renderExamPaperContent(includeAnswerKey = false) {
 
     ${answerKeyHtml}
   `;
+
+  const renderedHtml = container.innerHTML;
+  if (printContainer) {
+    printContainer.innerHTML = renderedHtml;
+  }
 }
 
 function triggerNativePrint() {
+  const chk = document.getElementById('chkIncludeAnswerKey');
+  renderExamPaperContent(chk ? chk.checked : false);
   window.print();
 }
 

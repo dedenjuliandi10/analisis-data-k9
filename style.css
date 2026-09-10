@@ -4045,62 +4045,53 @@ button {
 }
 
 /* ==========================================================================
-   @MEDIA PRINT - KHUSUS CETAK PRINTER / PDF
+   @MEDIA PRINT - KHUSUS CETAK PRINTER / PDF RESMI (ANTI-BLANK)
    ========================================================================== */
+#printContainer, .print-only-container {
+  display: none !important;
+}
+
 @media print {
-  body * {
-    visibility: hidden;
-  }
-
-  .modal-backdrop,
-  .app-header,
-  .main-container,
-  .app-footer,
-  .print-dialog-header,
-  .print-dialog-toolbar,
-  .modal-close-btn,
-  .btn {
-    display: none !important;
-  }
-
-  #printExamModal {
-    position: static !important;
-    display: block !important;
-    background: transparent !important;
-    padding: 0 !important;
-  }
-
-  .modal-print-dialog {
-    max-width: 100% !important;
+  html, body {
     width: 100% !important;
-    box-shadow: none !important;
-    border: none !important;
-    background: transparent !important;
+    height: auto !important;
+    margin: 0 !important;
     padding: 0 !important;
-  }
-
-  .paper-preview-scroll {
-    background: transparent !important;
-    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
     overflow: visible !important;
   }
 
-  #printableExamSheet,
-  #printableExamSheet * {
+  /* Sembunyikan SEMUA elemen web di body KECUALI #printContainer */
+  body > *:not(#printContainer) {
+    display: none !important;
+  }
+
+  /* Tampilkan HANYA #printContainer secara penuh dan bersih */
+  #printContainer, .print-only-container {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
     visibility: visible !important;
   }
 
-  #printableExamSheet {
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
+  #printContainer * {
+    visibility: visible !important;
+    color: #000000 !important;
+  }
+
+  .exam-paper-sheet {
+    box-shadow: none !important;
+    border: none !important;
     padding: 0 !important;
     margin: 0 !important;
-    box-shadow: none !important;
-    color: #000000 !important;
-    background: #ffffff !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    min-height: auto !important;
   }
 
   @page {
